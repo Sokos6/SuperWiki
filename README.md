@@ -1,4 +1,4 @@
 # SuperWiki
-# Christopher Bergstrom
-# Shelby Escobedo
-# Will Sokolowski
+Christopher Bergstrom
+Shelby Escobedo
+Will Sokolowski
