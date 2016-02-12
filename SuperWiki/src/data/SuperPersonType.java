@@ -4,8 +4,8 @@ import java.time.Year;
 
 public class SuperPersonType
 {
-	private int superType_id;
-	private int superPerson_id;
+	private SuperType superType;
+	private SuperPerson superPerson;
 	private Year startYear;
 	private Year endYear;
 	

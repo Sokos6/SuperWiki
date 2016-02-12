@@ -1,6 +1,7 @@
 package data;
 
 import java.time.Year;
+import java.util.List;
 
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
@@ -19,7 +20,11 @@ public class SuperPersons
 	private String alias;	
 	private Year created;
 	private String creator;
-	private int team_id;
+	private SuperTeam team;
+	private String appearance;
+	private List<SuperPersonType> superPersonType;
+	private List<SuperPersons>  nemesis;
+	
 	public int getId()
 	{
 		return id;
