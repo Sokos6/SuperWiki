@@ -47,9 +47,8 @@ CREATE TABLE IF NOT EXISTS `superhero` (
   `name` VARCHAR(45) NOT NULL,
   `Created` YEAR NULL,
   `Creator` VARCHAR(45) NULL,
-  `Superherocol` VARCHAR(45) NULL,
-  `Team_id` INT NULL,
-  PRIMARY KEY (`id`),
+  `Team_id` INT NOT NULL,
+  PRIMARY KEY (`id`, `Team_id`),
   CONSTRAINT `alias_name`
     FOREIGN KEY (`Team_id`)
     REFERENCES `team` (`id`)
@@ -146,7 +145,7 @@ CREATE TABLE IF NOT EXISTS `comment` (
   `user_id` INT NOT NULL,
   `message` VARCHAR(145) NULL,
   `created` DATETIME NOT NULL,
-  PRIMARY KEY (`id`),
+  PRIMARY KEY (`id`, `user_id`),
   CONSTRAINT `id`
     FOREIGN KEY (`user_id`)
     REFERENCES `user` (`id`)
