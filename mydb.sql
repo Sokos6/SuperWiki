@@ -43,7 +43,7 @@ CREATE TABLE IF NOT EXISTS `superpersons` (
   `name` VARCHAR(45) NOT NULL,
   `Created` YEAR NULL DEFAULT NULL,
   `Creator` VARCHAR(45) NULL DEFAULT NULL,
-  `Team_id` INT(11) NULL,
+  `Team_id` INT(11) NULL DEFAULT NULL,
   PRIMARY KEY (`id`),
   CONSTRAINT `alias_name`
     FOREIGN KEY (`Team_id`)
@@ -69,8 +69,7 @@ CREATE TABLE IF NOT EXISTS `alias` (
   `name` VARCHAR(45) NOT NULL,
   `Appearance` VARCHAR(145) NULL DEFAULT NULL,
   `Superhero_id` INT(11) NOT NULL,
-  `Villain_id` INT(11) NOT NULL,
-  PRIMARY KEY (`name`, `Villain_id`, `Superhero_id`),
+  PRIMARY KEY (`name`),
   CONSTRAINT `fk_Alias_Superhero1`
     FOREIGN KEY (`Superhero_id`)
     REFERENCES `superpersons` (`id`)
@@ -209,6 +208,31 @@ SHOW WARNINGS;
 SET SQL_MODE=@OLD_SQL_MODE;
 SET FOREIGN_KEY_CHECKS=@OLD_FOREIGN_KEY_CHECKS;
 SET UNIQUE_CHECKS=@OLD_UNIQUE_CHECKS;
+
+-- -----------------------------------------------------
+-- Data for table `teams`
+-- -----------------------------------------------------
+START TRANSACTION;
+USE `mydb`;
+INSERT INTO `teams` (`id`, `name`) VALUES (1, 'Avengers');
+
+COMMIT;
+
+
+-- -----------------------------------------------------
+-- Data for table `superpersons`
+-- -----------------------------------------------------
+START TRANSACTION;
+USE `mydb`;
+INSERT INTO `superpersons` (`id`, `name`, `Created`, `Creator`, `Team_id`) VALUES (1, 'Iron Man', 1963, 'Stan Lee', 1);
+INSERT INTO `superpersons` (`id`, `name`, `Created`, `Creator`, `Team_id`) VALUES (2, 'Captain America', 1941, 'Stan Lee', 1);
+INSERT INTO `superpersons` (`id`, `name`, `Created`, `Creator`, `Team_id`) VALUES (3, 'Hulk', 1962, 'Stan Lee', 1);
+INSERT INTO `superpersons` (`id`, `name`, `Created`, `Creator`, `Team_id`) VALUES (4, 'Thor', 1951, 'Stan Lee', 1);
+INSERT INTO `superpersons` (`id`, `name`, `Created`, `Creator`, `Team_id`) VALUES (5, 'Black Widow', 1964, 'Stan Lee', 1);
+INSERT INTO `superpersons` (`id`, `name`, `Created`, `Creator`, `Team_id`) VALUES (6, 'Hawkeye', 1964, 'Stan Lee', 1);
+
+COMMIT;
+
 
 -- -----------------------------------------------------
 -- Data for table `supertypes`
