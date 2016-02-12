@@ -2,9 +2,20 @@ package data;
 
 import java.time.Year;
 
+import javax.persistence.Entity;
+import javax.persistence.EnumType;
+import javax.persistence.Enumerated;
+import javax.persistence.JoinColumn;
+import javax.persistence.ManyToOne;
+import javax.persistence.Table;
+@Entity
+@Table(name="superpersontypes")
 public class SuperPersonType
 {
+	@Enumerated(EnumType.STRING)
 	private SuperType superType;
+	@ManyToOne
+	@JoinColumn(name= "superperson_id")
 	private SuperPersons superPerson;
 	private Year startYear;
 	private Year endYear;

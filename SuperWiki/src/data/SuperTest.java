@@ -21,7 +21,7 @@ public class SuperTest
 		// sp.setCreator("Stan Lee");
 		// em.persist(sp);
 
-		SuperPersons sp = em.find(SuperPersons.class, 1);
+	//	SuperPersons sp = em.find(SuperPersons.class, 1);
 		// em.remove(sp);
 
 		em.getTransaction().commit();
