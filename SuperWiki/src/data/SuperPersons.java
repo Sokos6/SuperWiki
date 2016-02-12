@@ -25,7 +25,6 @@ public class SuperPersons
 	private List<SuperPersonType> superPersonType;
 	private List<SuperPersons>  nemesis;
 	private int team_id;
-	private String appearance;
 	private String costume;
 	
 	public int getId()
@@ -91,5 +90,29 @@ public class SuperPersons
 	public void setCostume(String costume)
 	{
 		this.costume = costume;
+	}
+	public SuperTeam getTeam()
+	{
+		return team;
+	}
+	public void setTeam(SuperTeam team)
+	{
+		this.team = team;
+	}
+	public List<SuperPersonType> getSuperPersonType()
+	{
+		return superPersonType;
+	}
+	public void setSuperPersonType(List<SuperPersonType> superPersonType)
+	{
+		this.superPersonType = superPersonType;
+	}
+	public List<SuperPersons> getNemesis()
+	{
+		return nemesis;
+	}
+	public void setNemesis(List<SuperPersons> nemesis)
+	{
+		this.nemesis = nemesis;
 	}
 }
