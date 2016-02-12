@@ -20,6 +20,9 @@ public class SuperPersons
 	private Year created;
 	private String creator;
 	private int team_id;
+	private String appearance;
+	private String costume;
+	
 	public int getId()
 	{
 		return id;
@@ -67,5 +70,21 @@ public class SuperPersons
 	public void setAlias(String alias)
 	{
 		this.alias = alias;
+	}
+	public String getAppearance()
+	{
+		return appearance;
+	}
+	public void setAppearance(String appearance)
+	{
+		this.appearance = appearance;
+	}
+	public String getCostume()
+	{
+		return costume;
+	}
+	public void setCostume(String costume)
+	{
+		this.costume = costume;
 	}
 }
