@@ -32,7 +32,6 @@ DROP TABLE IF EXISTS `team` ;
 CREATE TABLE IF NOT EXISTS `team` (
   `id` INT NOT NULL AUTO_INCREMENT,
   `name` VARCHAR(45) NOT NULL,
-  `Teamcol` VARCHAR(45) NULL,
   PRIMARY KEY (`id`))
 ENGINE = InnoDB;
 
@@ -154,6 +153,30 @@ CREATE TABLE IF NOT EXISTS `comment` (
 ENGINE = InnoDB;
 
 CREATE INDEX `id_idx` ON `comment` (`user_id` ASC);
+
+
+-- -----------------------------------------------------
+-- Data for table `team`
+-- -----------------------------------------------------
+START TRANSACTION;
+INSERT INTO `team` (`id`, `name`) VALUES (1, 'Avengers');
+
+COMMIT;
+
+
+-- -----------------------------------------------------
+-- Data for table `superhero`
+-- -----------------------------------------------------
+START TRANSACTION;
+INSERT INTO `superhero` (`id`, `name`, `Created`, `Creator`, `Team_id`) VALUES (id, 'name', created, 'Creator', Team_id);
+INSERT INTO `superhero` (`id`, `name`, `Created`, `Creator`, `Team_id`) VALUES (1, 'Iron Man', 1963, 'Stan Lee', 1);
+INSERT INTO `superhero` (`id`, `name`, `Created`, `Creator`, `Team_id`) VALUES (2, 'Captain America', 1941, 'Stan Lee', 1);
+INSERT INTO `superhero` (`id`, `name`, `Created`, `Creator`, `Team_id`) VALUES (3, 'Hulk', 1962, 'Stan Lee', 1);
+INSERT INTO `superhero` (`id`, `name`, `Created`, `Creator`, `Team_id`) VALUES (4, 'Thor', 1951, 'Stan Lee', 1);
+INSERT INTO `superhero` (`id`, `name`, `Created`, `Creator`, `Team_id`) VALUES (5, 'Black Widow', 1964, 'Stan Lee', 1);
+INSERT INTO `superhero` (`id`, `name`, `Created`, `Creator`, `Team_id`) VALUES (6, 'Hawkeye', 1964, 'Stan Lee', 1);
+
+COMMIT;
 
 
 SET SQL_MODE=@OLD_SQL_MODE;
