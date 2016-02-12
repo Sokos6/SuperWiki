@@ -14,11 +14,18 @@ public class SuperPersons
 	@GeneratedValue(strategy=GenerationType.IDENTITY)
 	private int id;
 	private String name;
+	private String alias;	
 	private int created;
 	private String creator;
-	private SuperTeam team_id;
-	private int super_type_id;
-	
+	private int team_id;
+	public int getId()
+	{
+		return id;
+	}
+	public void setId(int id)
+	{
+		this.id = id;
+	}
 	public String getName()
 	{
 		return name;
@@ -43,25 +50,20 @@ public class SuperPersons
 	{
 		this.creator = creator;
 	}
-	public SuperTeam getTeam_id()
+	public int getTeam_id()
 	{
 		return team_id;
 	}
-	public void setTeam_id(SuperTeam team_id)
+	public void setTeam_id(int team_id)
 	{
 		this.team_id = team_id;
 	}
-	public int getSuper_type_id()
+	public String getAlias()
 	{
-		return super_type_id;
+		return alias;
 	}
-	public void setSuper_type_id(int super_type_id)
+	public void setAlias(String alias)
 	{
-		this.super_type_id = super_type_id;
+		this.alias = alias;
 	}
-	public int getId()
-	{
-		return id;
-	}
-	
 }
