@@ -7,142 +7,114 @@ SET @OLD_SQL_MODE=@@SQL_MODE, SQL_MODE='TRADITIONAL,ALLOW_INVALID_DATES';
 -- -----------------------------------------------------
 -- Schema mydb
 -- -----------------------------------------------------
+DROP SCHEMA IF EXISTS `mydb` ;
 
 -- -----------------------------------------------------
--- Table `user`
+-- Schema mydb
 -- -----------------------------------------------------
-DROP TABLE IF EXISTS `user` ;
-
-CREATE TABLE IF NOT EXISTS `user` (
-  `id` INT NOT NULL AUTO_INCREMENT,
-  `username` VARCHAR(16) NOT NULL,
-  `email` VARCHAR(255) NULL,
-  `password` VARCHAR(32) NOT NULL,
-  `create_time` TIMESTAMP NULL DEFAULT CURRENT_TIMESTAMP,
-  PRIMARY KEY (`id`));
-
-CREATE UNIQUE INDEX `username_UNIQUE` ON `user` (`username` ASC);
-
+CREATE SCHEMA IF NOT EXISTS `mydb` DEFAULT CHARACTER SET latin1 ;
+SHOW WARNINGS;
+USE `mydb` ;
 
 -- -----------------------------------------------------
--- Table `team`
+-- Table `teams`
 -- -----------------------------------------------------
-DROP TABLE IF EXISTS `team` ;
+DROP TABLE IF EXISTS `teams` ;
 
-CREATE TABLE IF NOT EXISTS `team` (
-  `id` INT NOT NULL AUTO_INCREMENT,
+SHOW WARNINGS;
+CREATE TABLE IF NOT EXISTS `teams` (
+  `id` INT(11) NOT NULL AUTO_INCREMENT,
   `name` VARCHAR(45) NOT NULL,
   PRIMARY KEY (`id`))
-ENGINE = InnoDB;
+ENGINE = InnoDB
+AUTO_INCREMENT = 2
+DEFAULT CHARACTER SET = latin1;
 
+SHOW WARNINGS;
 
 -- -----------------------------------------------------
--- Table `superhero`
+-- Table `superpersons`
 -- -----------------------------------------------------
-DROP TABLE IF EXISTS `superhero` ;
+DROP TABLE IF EXISTS `superpersons` ;
 
-CREATE TABLE IF NOT EXISTS `superhero` (
-  `id` INT NOT NULL AUTO_INCREMENT,
+SHOW WARNINGS;
+CREATE TABLE IF NOT EXISTS `superpersons` (
+  `id` INT(11) NOT NULL AUTO_INCREMENT,
   `name` VARCHAR(45) NOT NULL,
-  `Created` YEAR NULL,
-  `Creator` VARCHAR(45) NULL,
-  `Team_id` INT NOT NULL,
-  PRIMARY KEY (`id`, `Team_id`),
+  `Created` YEAR NULL DEFAULT NULL,
+  `Creator` VARCHAR(45) NULL DEFAULT NULL,
+  `Team_id` INT(11) NULL,
+  PRIMARY KEY (`id`),
   CONSTRAINT `alias_name`
     FOREIGN KEY (`Team_id`)
-    REFERENCES `team` (`id`)
+    REFERENCES `teams` (`id`)
     ON DELETE NO ACTION
     ON UPDATE NO ACTION)
-ENGINE = InnoDB;
+ENGINE = InnoDB
+AUTO_INCREMENT = 7
+DEFAULT CHARACTER SET = latin1;
 
-CREATE INDEX `fk_Superhero_Team_idx` ON `superhero` (`Team_id` ASC);
+SHOW WARNINGS;
+CREATE INDEX `fk_Superhero_Team_idx` ON `superpersons` (`Team_id` ASC);
 
-
--- -----------------------------------------------------
--- Table `villain`
--- -----------------------------------------------------
-DROP TABLE IF EXISTS `villain` ;
-
-CREATE TABLE IF NOT EXISTS `villain` (
-  `id` INT NOT NULL AUTO_INCREMENT,
-  `name` VARCHAR(45) NOT NULL,
-  `Created` YEAR NULL,
-  `Creator` VARCHAR(45) NULL,
-  `Team_id` INT NOT NULL,
-  PRIMARY KEY (`id`, `Team_id`),
-  CONSTRAINT `fk_Villain_Team1`
-    FOREIGN KEY (`Team_id`)
-    REFERENCES `team` (`id`)
-    ON DELETE NO ACTION
-    ON UPDATE NO ACTION)
-ENGINE = InnoDB;
-
-CREATE INDEX `fk_Villain_Team1_idx` ON `villain` (`Team_id` ASC);
-
+SHOW WARNINGS;
 
 -- -----------------------------------------------------
 -- Table `alias`
 -- -----------------------------------------------------
 DROP TABLE IF EXISTS `alias` ;
 
+SHOW WARNINGS;
 CREATE TABLE IF NOT EXISTS `alias` (
   `name` VARCHAR(45) NOT NULL,
-  `Appearance` VARCHAR(145) NULL,
-  `Superhero_id` INT NOT NULL,
-  `Villain_id` INT NOT NULL,
+  `Appearance` VARCHAR(145) NULL DEFAULT NULL,
+  `Superhero_id` INT(11) NOT NULL,
+  `Villain_id` INT(11) NOT NULL,
   PRIMARY KEY (`name`, `Villain_id`, `Superhero_id`),
   CONSTRAINT `fk_Alias_Superhero1`
     FOREIGN KEY (`Superhero_id`)
-    REFERENCES `superhero` (`id`)
-    ON DELETE NO ACTION
-    ON UPDATE NO ACTION,
-  CONSTRAINT `fk_Alias_Villain1`
-    FOREIGN KEY (`Villain_id`)
-    REFERENCES `villain` (`id`)
+    REFERENCES `superpersons` (`id`)
     ON DELETE NO ACTION
     ON UPDATE NO ACTION)
-ENGINE = InnoDB;
+ENGINE = InnoDB
+DEFAULT CHARACTER SET = latin1;
 
+SHOW WARNINGS;
 CREATE INDEX `fk_Alias_Superhero1_idx` ON `alias` (`Superhero_id` ASC);
 
-CREATE INDEX `fk_Alias_Villain1_idx` ON `alias` (`Villain_id` ASC);
-
+SHOW WARNINGS;
 
 -- -----------------------------------------------------
--- Table `nemesis`
+-- Table `user`
 -- -----------------------------------------------------
-DROP TABLE IF EXISTS `nemesis` ;
+DROP TABLE IF EXISTS `user` ;
 
-CREATE TABLE IF NOT EXISTS `nemesis` (
-  `Superhero_id` INT NOT NULL,
-  `Villain_id` INT NOT NULL,
-  PRIMARY KEY (`Superhero_id`, `Villain_id`),
-  CONSTRAINT `fk_Superhero_has_Villain_Superhero1`
-    FOREIGN KEY (`Superhero_id`)
-    REFERENCES `superhero` (`id`)
-    ON DELETE NO ACTION
-    ON UPDATE NO ACTION,
-  CONSTRAINT `fk_Superhero_has_Villain_Villain1`
-    FOREIGN KEY (`Villain_id`)
-    REFERENCES `villain` (`id`)
-    ON DELETE NO ACTION
-    ON UPDATE NO ACTION)
-ENGINE = InnoDB;
+SHOW WARNINGS;
+CREATE TABLE IF NOT EXISTS `user` (
+  `id` INT(11) NOT NULL AUTO_INCREMENT,
+  `username` VARCHAR(16) NOT NULL,
+  `email` VARCHAR(255) NULL DEFAULT NULL,
+  `password` VARCHAR(32) NOT NULL,
+  `create_time` TIMESTAMP NULL DEFAULT CURRENT_TIMESTAMP,
+  PRIMARY KEY (`id`))
+ENGINE = InnoDB
+DEFAULT CHARACTER SET = latin1;
 
-CREATE INDEX `fk_Superhero_has_Villain_Villain1_idx` ON `nemesis` (`Villain_id` ASC);
+SHOW WARNINGS;
+CREATE UNIQUE INDEX `username_UNIQUE` ON `user` (`username` ASC);
 
-CREATE INDEX `fk_Superhero_has_Villain_Superhero1_idx` ON `nemesis` (`Superhero_id` ASC);
-
+SHOW WARNINGS;
 
 -- -----------------------------------------------------
 -- Table `comment`
 -- -----------------------------------------------------
 DROP TABLE IF EXISTS `comment` ;
 
+SHOW WARNINGS;
 CREATE TABLE IF NOT EXISTS `comment` (
-  `id` INT NOT NULL AUTO_INCREMENT,
-  `user_id` INT NOT NULL,
-  `message` VARCHAR(145) NULL,
+  `id` INT(11) NOT NULL AUTO_INCREMENT,
+  `user_id` INT(11) NOT NULL,
+  `message` VARCHAR(145) NULL DEFAULT NULL,
   `created` DATETIME NOT NULL,
   PRIMARY KEY (`id`, `user_id`),
   CONSTRAINT `id`
@@ -150,35 +122,101 @@ CREATE TABLE IF NOT EXISTS `comment` (
     REFERENCES `user` (`id`)
     ON DELETE NO ACTION
     ON UPDATE NO ACTION)
-ENGINE = InnoDB;
+ENGINE = InnoDB
+DEFAULT CHARACTER SET = latin1;
 
+SHOW WARNINGS;
 CREATE INDEX `id_idx` ON `comment` (`user_id` ASC);
 
+SHOW WARNINGS;
 
 -- -----------------------------------------------------
--- Data for table `team`
+-- Table `nemesis`
 -- -----------------------------------------------------
-START TRANSACTION;
-INSERT INTO `team` (`id`, `name`) VALUES (1, 'Avengers');
+DROP TABLE IF EXISTS `nemesis` ;
 
-COMMIT;
+SHOW WARNINGS;
+CREATE TABLE IF NOT EXISTS `nemesis` (
+  `superperson_id` INT(11) NOT NULL,
+  `nemesis_id` INT(11) NOT NULL,
+  CONSTRAINT `fk_Superperson_superperson`
+    FOREIGN KEY (`superperson_id`)
+    REFERENCES `superpersons` (`id`)
+    ON DELETE NO ACTION
+    ON UPDATE NO ACTION,
+  CONSTRAINT `fk_nemesis_superperson`
+    FOREIGN KEY (`nemesis_id`)
+    REFERENCES `superpersons` (`id`)
+    ON DELETE NO ACTION
+    ON UPDATE NO ACTION)
+ENGINE = InnoDB
+DEFAULT CHARACTER SET = latin1;
 
+SHOW WARNINGS;
+CREATE INDEX `fk_Superhero_has_Villain_Superhero1_idx` ON `nemesis` (`superperson_id` ASC);
+
+SHOW WARNINGS;
+CREATE INDEX `fk_nemesis_superperson_idx` ON `nemesis` (`nemesis_id` ASC);
+
+SHOW WARNINGS;
 
 -- -----------------------------------------------------
--- Data for table `superhero`
+-- Table `supertypes`
 -- -----------------------------------------------------
-START TRANSACTION;
-INSERT INTO `superhero` (`id`, `name`, `Created`, `Creator`, `Team_id`) VALUES (id, 'name', created, 'Creator', Team_id);
-INSERT INTO `superhero` (`id`, `name`, `Created`, `Creator`, `Team_id`) VALUES (1, 'Iron Man', 1963, 'Stan Lee', 1);
-INSERT INTO `superhero` (`id`, `name`, `Created`, `Creator`, `Team_id`) VALUES (2, 'Captain America', 1941, 'Stan Lee', 1);
-INSERT INTO `superhero` (`id`, `name`, `Created`, `Creator`, `Team_id`) VALUES (3, 'Hulk', 1962, 'Stan Lee', 1);
-INSERT INTO `superhero` (`id`, `name`, `Created`, `Creator`, `Team_id`) VALUES (4, 'Thor', 1951, 'Stan Lee', 1);
-INSERT INTO `superhero` (`id`, `name`, `Created`, `Creator`, `Team_id`) VALUES (5, 'Black Widow', 1964, 'Stan Lee', 1);
-INSERT INTO `superhero` (`id`, `name`, `Created`, `Creator`, `Team_id`) VALUES (6, 'Hawkeye', 1964, 'Stan Lee', 1);
+DROP TABLE IF EXISTS `supertypes` ;
 
-COMMIT;
+SHOW WARNINGS;
+CREATE TABLE IF NOT EXISTS `supertypes` (
+  `id` INT NOT NULL AUTO_INCREMENT,
+  `name` VARCHAR(45) NULL,
+  PRIMARY KEY (`id`))
+ENGINE = InnoDB;
 
+SHOW WARNINGS;
+
+-- -----------------------------------------------------
+-- Table `superpersontypes`
+-- -----------------------------------------------------
+DROP TABLE IF EXISTS `superpersontypes` ;
+
+SHOW WARNINGS;
+CREATE TABLE IF NOT EXISTS `superpersontypes` (
+  `supertype_id` INT NOT NULL,
+  `superperson_id` INT(11) NOT NULL,
+  `startYear` YEAR NOT NULL,
+  `endYear` YEAR NULL,
+  PRIMARY KEY (`supertype_id`, `superperson_id`),
+  CONSTRAINT `fk_supertype_has_superperson_supertype1`
+    FOREIGN KEY (`supertype_id`)
+    REFERENCES `supertypes` (`id`)
+    ON DELETE NO ACTION
+    ON UPDATE NO ACTION,
+  CONSTRAINT `fk_supertype_has_superperson_superperson1`
+    FOREIGN KEY (`superperson_id`)
+    REFERENCES `superpersons` (`id`)
+    ON DELETE NO ACTION
+    ON UPDATE NO ACTION)
+ENGINE = InnoDB;
+
+SHOW WARNINGS;
+CREATE INDEX `fk_supertype_has_superperson_superperson1_idx` ON `superpersontypes` (`superperson_id` ASC);
+
+SHOW WARNINGS;
+CREATE INDEX `fk_supertype_has_superperson_supertype1_idx` ON `superpersontypes` (`supertype_id` ASC);
+
+SHOW WARNINGS;
 
 SET SQL_MODE=@OLD_SQL_MODE;
 SET FOREIGN_KEY_CHECKS=@OLD_FOREIGN_KEY_CHECKS;
 SET UNIQUE_CHECKS=@OLD_UNIQUE_CHECKS;
+
+-- -----------------------------------------------------
+-- Data for table `supertypes`
+-- -----------------------------------------------------
+START TRANSACTION;
+USE `mydb`;
+INSERT INTO `supertypes` (`id`, `name`) VALUES (1, 'superhero');
+INSERT INTO `supertypes` (`id`, `name`) VALUES (2, 'villain');
+
+COMMIT;
+
