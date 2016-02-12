@@ -9,22 +9,6 @@ public class SuperPersonType
 	private Year startYear;
 	private Year endYear;
 	
-	public int getSuperType_id()
-	{
-		return superType_id;
-	}
-	public void setSuperType_id(int superType_id)
-	{
-		this.superType_id = superType_id;
-	}
-	public int getSuperPerson_id()
-	{
-		return superPerson_id;
-	}
-	public void setSuperPerson_id(int superPerson_id)
-	{
-		this.superPerson_id = superPerson_id;
-	}
 	public Year getStartYear()
 	{
 		return startYear;
@@ -40,5 +24,21 @@ public class SuperPersonType
 	public void setEndYear(Year endYear)
 	{
 		this.endYear = endYear;
+	}
+	public SuperType getSuperType()
+	{
+		return superType;
+	}
+	public void setSuperType(SuperType superType)
+	{
+		this.superType = superType;
+	}
+	public SuperPersons getSuperPerson()
+	{
+		return superPerson;
+	}
+	public void setSuperPerson(SuperPersons superPerson)
+	{
+		this.superPerson = superPerson;
 	}
 }

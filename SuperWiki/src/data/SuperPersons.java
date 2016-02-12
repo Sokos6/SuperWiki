@@ -83,4 +83,28 @@ public class SuperPersons
 	{
 		this.costume = costume;
 	}
+	public SuperTeam getTeam()
+	{
+		return team;
+	}
+	public void setTeam(SuperTeam team)
+	{
+		this.team = team;
+	}
+	public List<SuperPersonType> getSuperPersonType()
+	{
+		return superPersonType;
+	}
+	public void setSuperPersonType(List<SuperPersonType> superPersonType)
+	{
+		this.superPersonType = superPersonType;
+	}
+	public List<SuperPersons> getNemesis()
+	{
+		return nemesis;
+	}
+	public void setNemesis(List<SuperPersons> nemesis)
+	{
+		this.nemesis = nemesis;
+	}
 }
