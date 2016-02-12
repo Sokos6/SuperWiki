@@ -24,7 +24,6 @@ public class SuperPersons
 	private String appearance;
 	private List<SuperPersonType> superPersonType;
 	private List<SuperPersons>  nemesis;
-	private int team_id;
 	private String appearance;
 	private String costume;
 	
@@ -59,14 +58,6 @@ public class SuperPersons
 	public void setCreator(String creator)
 	{
 		this.creator = creator;
-	}
-	public int getTeam_id()
-	{
-		return team_id;
-	}
-	public void setTeam_id(int team_id)
-	{
-		this.team_id = team_id;
 	}
 	public String getAlias()
 	{

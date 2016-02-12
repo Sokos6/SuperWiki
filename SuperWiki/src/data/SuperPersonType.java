@@ -5,7 +5,7 @@ import java.time.Year;
 public class SuperPersonType
 {
 	private SuperType superType;
-	private SuperPerson superPerson;
+	private SuperPersons superPerson;
 	private Year startYear;
 	private Year endYear;
 	
