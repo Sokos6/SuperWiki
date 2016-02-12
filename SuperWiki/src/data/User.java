@@ -1,12 +1,14 @@
 package data;
 
+import java.util.Date;
+
 public class User
 {
 	private int id;
 	private String username;
 	private String email;
 	private String password;
-	private int timeStamp;
+	private Date timeStamp;
 	
 	public int getId()
 	{
@@ -40,11 +42,11 @@ public class User
 	{
 		this.password = password;
 	}
-	public int getTimeStamp()
+	public Date getTimeStamp()
 	{
 		return timeStamp;
 	}
-	public void setTimeStamp(int timeStamp)
+	public void setTimeStamp(Date timeStamp)
 	{
 		this.timeStamp = timeStamp;
 	}

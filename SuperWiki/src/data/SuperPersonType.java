@@ -1,11 +1,13 @@
 package data;
 
+import java.time.Year;
+
 public class SuperPersonType
 {
 	private int superType_id;
 	private int superPerson_id;
-	private int startYear;
-	private int endYear;
+	private Year startYear;
+	private Year endYear;
 	
 	public int getSuperType_id()
 	{
@@ -23,19 +25,19 @@ public class SuperPersonType
 	{
 		this.superPerson_id = superPerson_id;
 	}
-	public int getStartYear()
+	public Year getStartYear()
 	{
 		return startYear;
 	}
-	public void setStartYear(int startYear)
+	public void setStartYear(Year startYear)
 	{
 		this.startYear = startYear;
 	}
-	public int getEndYear()
+	public Year getEndYear()
 	{
 		return endYear;
 	}
-	public void setEndYear(int endYear)
+	public void setEndYear(Year endYear)
 	{
 		this.endYear = endYear;
 	}

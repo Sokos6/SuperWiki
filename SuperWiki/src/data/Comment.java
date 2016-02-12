@@ -1,11 +1,13 @@
 package data;
 
+import java.util.Date;
+
 public class Comment
 {
 	private int id;
 	private int user_id;
 	private String message;
-	private int dateTime;
+	private Date dateTime;
 	
 	public int getId()
 	{
@@ -31,11 +33,11 @@ public class Comment
 	{
 		this.message = message;
 	}
-	public int getDateTime()
+	public Date getDateTime()
 	{
 		return dateTime;
 	}
-	public void setDateTime(int dateTime)
+	public void setDateTime(Date dateTime)
 	{
 		this.dateTime = dateTime;
 	}

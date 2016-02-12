@@ -1,5 +1,7 @@
 package data;
 
+import java.time.Year;
+
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
@@ -15,7 +17,7 @@ public class SuperPersons
 	private int id;
 	private String name;
 	private String alias;	
-	private int created;
+	private Year created;
 	private String creator;
 	private int team_id;
 	public int getId()
@@ -34,11 +36,11 @@ public class SuperPersons
 	{
 		this.name = name;
 	}
-	public int getCreated()
+	public Year getCreated()
 	{
 		return created;
 	}
-	public void setCreated(int created)
+	public void setCreated(Year created)
 	{
 		this.created = created;
 	}
