@@ -10,10 +10,10 @@ public class SuperTest
 	{
 		EntityManagerFactory emf = Persistence.createEntityManagerFactory("MyPU");
 		EntityManager em = emf.createEntityManager();
-		em.getTransaction().begin();
-		// SuperPersons sp = em.find(SuperPersons.class, 1);
+		//em.getTransaction().begin();
+		 SuperPersons sp = em.find(SuperPersons.class, 1);
 		// sp.setName("Captain America");
-		// System.out.println(sp.getName());
+		 System.out.println(sp.getName());
 
 		// SuperPersons sp = new SuperPersons();
 		// sp.setName("Captain America");
@@ -24,7 +24,7 @@ public class SuperTest
 	//	SuperPersons sp = em.find(SuperPersons.class, 1);
 		// em.remove(sp);
 
-		em.getTransaction().commit();
+		//em.getTransaction().commit();
 		em.close();
 		emf.close();
 	}

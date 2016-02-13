@@ -16,7 +16,7 @@ public class SuperTeam
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private int id;
 	private String name;
-	@OneToMany(mappedBy="SuperPersons")
+	@OneToMany(mappedBy="team")
 	List<SuperPersons> members;
 	
 	public List<SuperPersons> getMembers()

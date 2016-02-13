@@ -28,7 +28,7 @@ public class SuperPersons {
 	@JoinColumn(name = "Team_id")
 	private SuperTeam team;
 	private String appearance;
-	@OneToMany(mappedBy = "SuperPersonType")
+	@OneToMany(mappedBy = "superPerson")
 	private List<SuperPersonType> superPersonType;
 	@ManyToMany
 	@JoinTable(name = "nemesis", joinColumns = @JoinColumn(name = "superperson_id") , inverseJoinColumns = @JoinColumn(name = "nemesis_id") )
