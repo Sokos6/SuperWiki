@@ -1,8 +1,9 @@
-package data;
+package superHeroTest;
 
-import java.time.Year;
+import java.sql.Date;
 import java.util.List;
 
+import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
@@ -20,19 +21,24 @@ public class SuperPersons {
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private int id;
+
 	private String name;
+	@Column(name = "alias_names")
 	private String alias;
-	private Year created;
+
+	private Date created;
 	private String creator;
 	@ManyToOne
 	@JoinColumn(name = "Team_id")
 	private SuperTeam team;
 	private String appearance;
-	@OneToMany(mappedBy = "superPerson")
-	private List<SuperPersonType> superPersonType;
-	@ManyToMany
-	@JoinTable(name = "nemesis", joinColumns = @JoinColumn(name = "superperson_id") , inverseJoinColumns = @JoinColumn(name = "nemesis_id") )
-	private List<SuperPersons> nemesis;
+	 @OneToMany(mappedBy = "superPerson")
+	 private List<SuperPersonType> superPersonType;
+	 @ManyToMany
+	 @JoinTable(name = "nemesis", joinColumns = @JoinColumn(name =
+	 "superperson_id") , inverseJoinColumns = @JoinColumn(name = "nemesis_id")
+	 )
+	 private List<SuperPersons> nemesis;
 	private String costume;
 
 	public int getId()
@@ -55,12 +61,12 @@ public class SuperPersons {
 		this.name = name;
 	}
 
-	public Year getCreated()
+	public Date getCreated()
 	{
 		return created;
 	}
 
-	public void setCreated(Year created)
+	public void setCreated(Date created)
 	{
 		this.created = created;
 	}
@@ -95,16 +101,16 @@ public class SuperPersons {
 		this.appearance = appearance;
 	}
 
-	public String getCostume()
-	{
-		return costume;
-	}
-
-	public void setCostume(String costume)
-	{
-		this.costume = costume;
-	}
-
+	 public String getCostume()
+	 {
+	 return costume;
+	 }
+	
+	 public void setCostume(String costume)
+	 {
+	 this.costume = costume;
+	 }
+	
 	public SuperTeam getTeam()
 	{
 		return team;

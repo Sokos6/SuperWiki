@@ -1,4 +1,6 @@
-package data;
+package superHeroTest;
+
+import java.util.List;
 
 import javax.persistence.EntityManager;
 import javax.persistence.EntityManagerFactory;
@@ -11,10 +13,13 @@ public class SuperTest
 		EntityManagerFactory emf = Persistence.createEntityManagerFactory("MyPU");
 		EntityManager em = emf.createEntityManager();
 		//em.getTransaction().begin();
-		 SuperPersons sp = em.find(SuperPersons.class, 1);
+		System.out.println("before query");
+		 SuperTeam st = em.find(SuperTeam.class, 1);
 		// sp.setName("Captain America");
-		 System.out.println(sp.getName());
-
+		 List<SuperPersons> members = st.getMembers();
+		 for (SuperPersons superPersons : members) {
+			System.out.println(superPersons.getName());
+		}
 		// SuperPersons sp = new SuperPersons();
 		// sp.setName("Captain America");
 		// sp.setCreated(1941);

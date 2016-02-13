@@ -1,4 +1,4 @@
-package data;
+package superHeroTest;
 
 public enum SuperType
 {
