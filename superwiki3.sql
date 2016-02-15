@@ -7,14 +7,14 @@ SET @OLD_SQL_MODE=@@SQL_MODE, SQL_MODE='TRADITIONAL,ALLOW_INVALID_DATES';
 -- -----------------------------------------------------
 -- Schema mydb
 -- -----------------------------------------------------
-DROP SCHEMA IF EXISTS `mydb` ;
+DROP SCHEMA IF EXISTS `superwiki` ;
 
 -- -----------------------------------------------------
 -- Schema mydb
 -- -----------------------------------------------------
-CREATE SCHEMA IF NOT EXISTS `mydb` DEFAULT CHARACTER SET latin1 ;
+CREATE SCHEMA IF NOT EXISTS `superwiki` DEFAULT CHARACTER SET latin1 ;
 SHOW WARNINGS;
-USE `mydb` ;
+USE `superwiki` ;
 
 -- -----------------------------------------------------
 -- Table `teams`
