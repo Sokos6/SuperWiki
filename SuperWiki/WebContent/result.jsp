@@ -7,6 +7,11 @@
 <title>Insert title here</title>
 </head>
 <body>
-	${result}
+	<p>${result.name}</p>
+	<p>${result.alias}</p>
+	<p>${result.creator }</p>
+	<p>${result.created }</p>
+	<p>${result.team.name }</p>
+	
 </body>
 </html>

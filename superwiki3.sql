@@ -5,12 +5,12 @@ SET @OLD_FOREIGN_KEY_CHECKS=@@FOREIGN_KEY_CHECKS, FOREIGN_KEY_CHECKS=0;
 SET @OLD_SQL_MODE=@@SQL_MODE, SQL_MODE='TRADITIONAL,ALLOW_INVALID_DATES';
 
 -- -----------------------------------------------------
--- Schema mydb
+-- Schema superwiki
 -- -----------------------------------------------------
 DROP SCHEMA IF EXISTS `superwiki` ;
 
 -- -----------------------------------------------------
--- Schema mydb
+-- Schema superwiki
 -- -----------------------------------------------------
 CREATE SCHEMA IF NOT EXISTS `superwiki` DEFAULT CHARACTER SET latin1 ;
 SHOW WARNINGS;
@@ -225,7 +225,7 @@ SET UNIQUE_CHECKS=@OLD_UNIQUE_CHECKS;
 -- Data for table `teams`
 -- -----------------------------------------------------
 START TRANSACTION;
-USE `mydb`;
+USE `superwiki`;
 INSERT INTO `teams` (`id`, `name`) VALUES (1, 'Avengers');
 
 COMMIT;
@@ -235,7 +235,7 @@ COMMIT;
 -- Data for table `superpersons`
 -- -----------------------------------------------------
 START TRANSACTION;
-USE `mydb`;
+USE `superwiki`;
 INSERT INTO `superpersons` (`id`, `name`, `alias_names`, `Created`, `Creator`, `Team_id`, `appearance`, `costume`) VALUES (1, 'Iron Man', 'Tony Stark', 1963, 'Stan Lee', 1, '', '');
 INSERT INTO `superpersons` (`id`, `name`, `alias_names`, `Created`, `Creator`, `Team_id`, `appearance`, `costume`) VALUES (2, 'Captain America', 'Steve Rogers', 1941, 'Stan Lee', 1, '', '');
 INSERT INTO `superpersons` (`id`, `name`, `alias_names`, `Created`, `Creator`, `Team_id`, `appearance`, `costume`) VALUES (3, 'Hulk', 'Bruce Banner', 1962, 'Stan Lee', 1, '', '');
@@ -250,7 +250,7 @@ COMMIT;
 -- Data for table `user`
 -- -----------------------------------------------------
 START TRANSACTION;
-USE `mydb`;
+USE `superwiki`;
 INSERT INTO `user` (`id`, `username`, `email`, `password`, `create_time`, `superpersons_id`) VALUES (1, 'admin', NULL, 'admin', NULL, NULL);
 INSERT INTO `user` (`id`, `username`, `email`, `password`, `create_time`, `superpersons_id`) VALUES (DEFAULT, DEFAULT, NULL, DEFAULT, NULL, NULL);
 
@@ -261,7 +261,7 @@ COMMIT;
 -- Data for table `superpersontypes`
 -- -----------------------------------------------------
 START TRANSACTION;
-USE `mydb`;
+USE `superwiki`;
 INSERT INTO `superpersontypes` (`id`, `supertype`, `superperson_id`, `startYear`, `endYear`) VALUES (1, 'superhero', 1, 1963, NULL);
 INSERT INTO `superpersontypes` (`id`, `supertype`, `superperson_id`, `startYear`, `endYear`) VALUES (2, 'superhero', 2, 1941, NULL);
 INSERT INTO `superpersontypes` (`id`, `supertype`, `superperson_id`, `startYear`, `endYear`) VALUES (3, 'superhero', 3, 1962, NULL);
