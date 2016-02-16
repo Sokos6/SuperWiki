@@ -1,10 +1,14 @@
 package superHeroTest;
 
 import java.sql.Date;
+import java.util.ArrayList;
 import java.util.List;
 
+import javax.persistence.CascadeType;
 import javax.persistence.Column;
 import javax.persistence.Entity;
+import javax.persistence.EnumType;
+import javax.persistence.Enumerated;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
@@ -20,7 +24,7 @@ import javax.persistence.Table;
 @Entity
 @Table(name = "superpersons")
 @NamedQueries({ @NamedQuery(name = "SuperPersons.getName", query = "select s FROM SuperPersons s WHERE s.name = :name"),
-		@NamedQuery(name = "SuperPersons.getAllSuperHeros", query="select s from SuperPersons s JOIN SuperPersonType sp ON s.id = sp.superPerson.id WHERE sp.superType = :supertype")})
+		@NamedQuery(name = "SuperPersons.getAllSuperHeros", query="select s from SuperPersons s WHERE s.superType = :supertype")})
 
 public class SuperPersons {
 	@Id
@@ -31,21 +35,31 @@ public class SuperPersons {
 	@Column(name = "alias_names")
 	private String alias;
 
-	private Date created;
+	private String firstAppearance;
 	private String creator;
 	@ManyToOne
 	@JoinColumn(name = "Team_id")
 	private SuperTeam team;
 	private String appearance;
-	 @OneToMany(mappedBy = "superPerson")
-	 private List<SuperPersonType> superPersonType;
+	@Enumerated(EnumType.STRING)
+	private SuperType superType;
 	 @ManyToMany
 	 @JoinTable(name = "nemesis", joinColumns = @JoinColumn(name =
 	 "superperson_id") , inverseJoinColumns = @JoinColumn(name = "nemesis_id")
 	 )
-	 private List<SuperPersons> nemesis;
-	private String costume;
+	 private List<SuperPersons> nemesis = new ArrayList<SuperPersons>();
+	@Override
+	public String toString()
+	{
+		return "SuperPersons [id=" + id + ", name=" + name + ", alias=" + alias +"]";
+	}
 
+	private String costume;
+	
+	public SuperPersons(){
+		
+	}
+	
 	public int getId()
 	{
 		return id;
@@ -66,14 +80,14 @@ public class SuperPersons {
 		this.name = name;
 	}
 
-	public Date getCreated()
+	public String getFirstAppearance()
 	{
-		return created;
+		return firstAppearance;
 	}
 
-	public void setCreated(Date created)
+	public void setFirstAppearance(String fa)
 	{
-		this.created = created;
+		firstAppearance = fa;
 	}
 
 	public String getCreator()
@@ -126,16 +140,6 @@ public class SuperPersons {
 		this.team = team;
 	}
 
-	public List<SuperPersonType> getSuperPersonType()
-	{
-		return superPersonType;
-	}
-
-	public void setSuperPersonType(List<SuperPersonType> superPersonType)
-	{
-		this.superPersonType = superPersonType;
-	}
-
 	public List<SuperPersons> getNemesis()
 	{
 		return nemesis;
@@ -144,5 +148,13 @@ public class SuperPersons {
 	public void setNemesis(List<SuperPersons> nemesis)
 	{
 		this.nemesis = nemesis;
+	}
+	public SuperType getSuperType()
+	{
+		return superType;
+	}
+	public void setSuperType(SuperType superType)
+	{
+		this.superType = superType;
 	}
 }

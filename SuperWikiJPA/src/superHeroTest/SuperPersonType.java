@@ -42,14 +42,14 @@ public class SuperPersonType
 	{
 		this.endYear = endYear;
 	}
-//	public SuperType getSuperType()
-//	{
-//		return superType;
-//	}
-//	public void setSuperType(SuperType superType)
-//	{
-//		this.superType = superType;
-//	}
+	public SuperType getSuperType()
+	{
+		return superType;
+	}
+	public void setSuperType(SuperType superType)
+	{
+		this.superType = superType;
+	}
 	public SuperPersons getSuperPerson()
 	{
 		return superPerson;
