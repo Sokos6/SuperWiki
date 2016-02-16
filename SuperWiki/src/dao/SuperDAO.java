@@ -26,10 +26,10 @@ public class SuperDAO {
 	
 	public List<SuperPersons> getAllSuperheroes()
 	{
-		return em.createQuery("select s from SuperPersons s JOIN SuperPersonType sp ON s.id = sp.superPerson.id WHERE sp.superType = :supertype", SuperPersons.class).setParameter("supertype", SuperType.superhero).getResultList();
+		return em.createNamedQuery("SuperPersons.getAllSuperHeros", SuperPersons.class).setParameter("supertype", SuperType.superhero).getResultList();
 	}
 	public List<SuperPersons> getAllVillains()
 	{
-		return em.createQuery("select s from SuperPersons s JOIN SuperPersonType sp ON s.id = sp.superPerson.id WHERE sp.superType = :supertype", SuperPersons.class).setParameter("supertype", SuperType.villain).getResultList();
+		return em.createNamedQuery("SuperPersons.getAllSuperHeros", SuperPersons.class).setParameter("supertype", SuperType.villain).getResultList();
 	}
 }
