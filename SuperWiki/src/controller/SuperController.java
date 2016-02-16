@@ -1,5 +1,6 @@
 package controller;
 
+import java.util.ArrayList;
 import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -11,6 +12,7 @@ import org.springframework.web.servlet.ModelAndView;
 
 import dao.SuperDAO;
 import superHeroTest.SuperPersons;
+import superHeroTest.SuperTeam;
 
 
 @Controller
@@ -56,8 +58,12 @@ public class SuperController
 	}
 	@RequestMapping(path="addSuperHero.do", method=RequestMethod.GET)
 	public ModelAndView addSuperForm(){
+		
 		ModelAndView mv = new ModelAndView();
 		mv.setViewName("addSuperHero.jsp");
+		mv.addObject(new SuperPersons());
+		mv.addObject(new SuperTeam());
+		mv.addObject(new ArrayList());
 		return mv;
 	}
 }
