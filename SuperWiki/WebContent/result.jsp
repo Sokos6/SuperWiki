@@ -12,6 +12,6 @@
 	<p>${result.creator }</p>
 	<p>${result.firstAppearance }</p>
 	<p>${result.team.name }</p>
-	
+	<br> <a href="updateCharacter.do">Update</a>
 </body>
 </html>

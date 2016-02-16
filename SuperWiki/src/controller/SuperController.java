@@ -74,40 +74,18 @@ public class SuperController {
 	@RequestMapping(path = "addSuperhero.do", method = RequestMethod.POST)
 	public ModelAndView addSuperhero(SuperPersons sp, @RequestParam("good") boolean superhero)
 	{
-		// public ModelAndView addSuperhero(@RequestParam("name") String name){
-		System.out.println("Test");
-		System.out.println(superhero);
+
+		
 		if (superhero) {
 			sp.setSuperType(SuperType.superhero);
 
 		} else {
 			sp.setSuperType(SuperType.villain);
 		}
-		// System.out.println(sp.getCreator());
 		superDao.addSuperPerson(sp);
 		ModelAndView mv = getByName(sp.getName());
 		return mv;
 	}
-	// @RequestMapping(path="addSuperhero.do", method=RequestMethod.POST)
-	// public ModelAndView addSuperhero(@RequestParam("name")String name,
-	// @RequestParam("alias")String alias, @RequestParam("team") String team,
-	// @RequestParam("creator") String creator, @RequestParam("created") Date
-	// created, @RequestParam("appearance") String appear,
-	// @RequestParam("costume") String costume, @RequestParam("superType")
-	// SuperType superType){
-	// System.out.println("test ");
-	// SuperTeam tm = new SuperTeam();
-	// tm.setName(team);
-	// SuperPersonType spt = new SuperPersonType();
-	// spt.setSuperType(superType);
-	// List<SuperPersonType> ls = new ArrayList<>();
-	// ls.add(spt);
-	// SuperPersons sp = new SuperPersons(name, alias, appear, tm, creator,
-	// created, costume, ls );
-	//
-	// superDao.addSuperPerson(sp);
-	// ModelAndView mv = getByName(sp.getName());
-	// return mv;
-	// }
+	
 
 }

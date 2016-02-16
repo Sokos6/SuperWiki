@@ -32,9 +32,6 @@ public class SuperDAO {
 	}
 	public void addSuperPerson(SuperPersons sp)
 	{
-		System.out.println(sp);
-		System.out.println(em.contains(sp));
 		em.persist(sp);
-		System.out.println(em.contains(sp));
 	}
 }
