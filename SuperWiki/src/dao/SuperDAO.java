@@ -7,7 +7,9 @@ import javax.persistence.PersistenceContext;
 
 import org.springframework.transaction.annotation.Transactional;
 
+import superHeroTest.SuperPersonType;
 import superHeroTest.SuperPersons;
+import superHeroTest.SuperType;
 
 @Transactional
 public class SuperDAO {
@@ -24,6 +26,10 @@ public class SuperDAO {
 	
 	public List<SuperPersons> getAllSuperheroes()
 	{
-		return em.createQuery("select s from SuperPersons s", SuperPersons.class).getResultList();
+		return em.createQuery("select s from SuperPersons s JOIN SuperPersonType sp ON s.id = sp.superPerson.id WHERE sp.superType = :supertype", SuperPersons.class).setParameter("supertype", SuperType.superhero).getResultList();
+	}
+	public List<SuperPersons> getAllVillains()
+	{
+		return em.createQuery("select s from SuperPersons s JOIN SuperPersonType sp ON s.id = sp.superPerson.id WHERE sp.superType = :supertype", SuperPersons.class).setParameter("supertype", SuperType.villain).getResultList();
 	}
 }
