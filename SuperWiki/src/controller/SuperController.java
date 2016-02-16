@@ -5,11 +5,11 @@ import java.util.List;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.servlet.ModelAndView;
 
 import dao.SuperDAO;
-import superHeroTest.SuperPersonType;
 import superHeroTest.SuperPersons;
 
 
@@ -54,5 +54,10 @@ public class SuperController
 		mv.addObject("result", villains);
 		return mv;
 	}
-	
+	@RequestMapping(path="addSuperHero.do", method=RequestMethod.GET)
+	public ModelAndView addSuperForm(){
+		ModelAndView mv = new ModelAndView();
+		mv.setViewName("addSuperHero.jsp");
+		return mv;
+	}
 }

@@ -12,13 +12,16 @@ import javax.persistence.JoinColumn;
 import javax.persistence.JoinTable;
 import javax.persistence.ManyToMany;
 import javax.persistence.ManyToOne;
+import javax.persistence.NamedQueries;
 import javax.persistence.NamedQuery;
 import javax.persistence.OneToMany;
 import javax.persistence.Table;
 
 @Entity
 @Table(name = "superpersons")
-@NamedQuery(name="SuperPersons.getName", query="select s FROM SuperPersons s WHERE s.name = :name")
+@NamedQueries({ @NamedQuery(name = "SuperPersons.getName", query = "select s FROM SuperPersons s WHERE s.name = :name"),
+		@NamedQuery(name = "SuperPersons.getAllSuperHeros", query="select s from SuperPersons s JOIN SuperPersonType sp ON s.id = sp.superPerson.id WHERE sp.superType = :supertype")})
+
 public class SuperPersons {
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)

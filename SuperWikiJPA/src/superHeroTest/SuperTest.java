@@ -15,11 +15,15 @@ public class SuperTest
 		//em.getTransaction().begin();
 		System.out.println("before query");
 		 SuperTeam st = em.find(SuperTeam.class, 1);
-		// sp.setName("Captain America");
-		 List<SuperPersons> members = st.getMembers();
-		 for (SuperPersons superPersons : members) {
-			System.out.println(superPersons.getName());
+		 List<SuperPersons> spt = em.createQuery("select s from SuperPersons s JOIN SuperPersonType sp ON s.id = sp.superPerson.id WHERE sp.superType = :supertype", SuperPersons.class).setParameter("supertype", SuperType.superhero).getResultList();
+		 for (SuperPersons superPerson : spt) {
+			System.out.println(superPerson.getName());
 		}
+		// sp.setName("Captain America");
+//		 List<SuperPersons> members = st.getMembers();
+//		 for (SuperPersons superPersons : members) {
+//			System.out.println(superPersons.getName());
+//		}
 		// SuperPersons sp = new SuperPersons();
 		// sp.setName("Captain America");
 		// sp.setCreated(1941);
