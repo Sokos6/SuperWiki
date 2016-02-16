@@ -40,7 +40,8 @@ public class SuperPersons {
 	@ManyToOne
 	@JoinColumn(name = "Team_id")
 	private SuperTeam team;
-	private String appearance;
+	private String origin;
+	private String publisher;
 	@Enumerated(EnumType.STRING)
 	private SuperType superType;
 	 @ManyToMany
@@ -54,7 +55,7 @@ public class SuperPersons {
 		return "SuperPersons [id=" + id + ", name=" + name + ", alias=" + alias +"]";
 	}
 
-	private String costume;
+	
 	
 	public SuperPersons(){
 		
@@ -110,24 +111,24 @@ public class SuperPersons {
 		this.alias = alias;
 	}
 
-	public String getAppearance()
+	public String getOrigin()
 	{
-		return appearance;
+		return origin;
 	}
 
-	public void setAppearance(String appearance)
+	public void setOrigin(String origin)
 	{
-		this.appearance = appearance;
+		this.origin = origin;
 	}
 
-	 public String getCostume()
+	 public String getPublisher()
 	 {
-	 return costume;
+	 return publisher;
 	 }
 	
-	 public void setCostume(String costume)
+	 public void setPublisher(String publisher)
 	 {
-	 this.costume = costume;
+	 this.publisher = publisher;
 	 }
 	
 	public SuperTeam getTeam()

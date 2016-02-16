@@ -14,10 +14,11 @@
 			Alias:<input type = "text" name = "alias"/>
 		<br>
 			Creator<input type="text" name="creator"/>
+			First Appearance:<input type="text" name="firstAppearance" />
 		<br>
-			Appearance:<textarea rows="4" cols="100" name="appearance"></textarea>
+			Origin:<textarea rows="4" cols="100" name="origin"></textarea>
 		<br>
-			Costume:<textarea rows="4" cols="100" name="costume"></textarea>
+			Publisher:<input type="text" name="publisher" />
 		<br>
 		<input type="radio" name="good" value="true">superhero
 		<input type="radio" name="good" value="false">villain

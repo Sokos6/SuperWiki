@@ -15,7 +15,7 @@
 		<br>
 			Creator<input type="text" name="creator" value="${character.creator }"/>
 		<br>
-			Appearance:<textarea rows="4" cols="100" name="appearance">${character.appearance}</textarea>
+			Appearance:<textarea rows="4" cols="100" name="appearance">${character.appearance} </textarea>
 		<br>
 			Costume:<textarea rows="4" cols="100" name="costume"></textarea>
 		<br>
