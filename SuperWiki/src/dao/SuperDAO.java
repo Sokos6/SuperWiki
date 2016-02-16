@@ -19,11 +19,9 @@ public class SuperDAO {
 	public SuperPersons getByName(String name) {
 		return em.createNamedQuery("SuperPersons.getName",SuperPersons.class).setParameter("name", name).getSingleResult();
 	}
-	
 	public SuperPersons getById(int Id) {
 		return em.find(SuperPersons.class, Id); 
 	}
-	
 	public List<SuperPersons> getAllSuperheroes()
 	{
 		return em.createNamedQuery("SuperPersons.getAllSuperHeros", SuperPersons.class).setParameter("supertype", SuperType.superhero).getResultList();
@@ -31,5 +29,12 @@ public class SuperDAO {
 	public List<SuperPersons> getAllVillains()
 	{
 		return em.createNamedQuery("SuperPersons.getAllSuperHeros", SuperPersons.class).setParameter("supertype", SuperType.villain).getResultList();
+	}
+	public void addSuperPerson(SuperPersons sp)
+	{
+		System.out.println(sp);
+		System.out.println(em.contains(sp));
+		em.persist(sp);
+		System.out.println(em.contains(sp));
 	}
 }

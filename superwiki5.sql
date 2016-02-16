@@ -127,7 +127,7 @@ CREATE TABLE `superpersons` (
 
 LOCK TABLES `superpersons` WRITE;
 /*!40000 ALTER TABLE `superpersons` DISABLE KEYS */;
-INSERT INTO `superpersons` VALUES (1,'Iron Man','Tony Stark','1963','Stan Lee',1,'','','superhero'),(2,'Captain America','Steve Rogers','1941','Stan Lee',1,'','', 'superhero'),(3,'Hulk','Bruce Banner','1962','Stan Lee',1,'','','superhero'),(4,'Thor',NULL,'1951','Stan Lee',1,'','','superhero'),(5,'Black Widow','Natasha Romanoff','1964','Stan Lee',1,'','','superhero'),(6,'Hawkeye','Clint Barton','1964','Stan Lee',1,'','','superhero'),(7,'Doctor Doom','Victor Von Doom','1962','Jack Kirby',NULL,NULL,NULL,'villain'),(8,'Venom','Eddie Brock','1988','Todd McFarlane',NULL,NULL,NULL,'villain'),(9,'Magneto','Max Eisenhaurdt','1963','Stan Lee, Jack Kirby',NULL,NULL,NULL,'villain'),(10,'Galactus','Galan','1966','Stan Lee, Jack Kirby',NULL,NULL,NULL,'villain'),(11,'Carnage','Cletus Kasady','1992','Mark Bagley',NULL,NULL,NULL,'villain');
+INSERT INTO `superpersons` VALUES (1,'Iron Man','Tony Stark','1963','Stan Lee',1,'','','superhero'),(2,'Captain America','Steve Rogers','1941','Stan Lee',1,'','','superhero'),(3,'Hulk','Bruce Banner','1962','Stan Lee',1,'','','superhero'),(4,'Thor',NULL,'1951','Stan Lee',1,'','','superhero'),(5,'Black Widow','Natasha Romanoff','1964','Stan Lee',1,'','','superhero'),(6,'Hawkeye','Clint Barton','1964','Stan Lee',1,'','','superhero'),(7,'Doctor Doom','Victor Von Doom','1962','Jack Kirby',NULL,NULL,NULL,'villain'),(8,'Venom','Eddie Brock','1988','Todd McFarlane',NULL,NULL,NULL,'villain'),(9,'Magneto','Max Eisenhaurdt','1963','Stan Lee, Jack Kirby',NULL,NULL,NULL,'villain'),(10,'Galactus','Galan','1966','Stan Lee, Jack Kirby',NULL,NULL,NULL,'villain'),(11,'Carnage','Cletus Kasady','1992','Mark Bagley',NULL,NULL,NULL,'villain');
 /*!40000 ALTER TABLE `superpersons` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -195,4 +195,4 @@ UNLOCK TABLES;
 /*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
 /*!40111 SET SQL_NOTES=@OLD_SQL_NOTES */;
 
--- Dump completed on 2016-02-15 17:16:22
+-- Dump completed on 2016-02-16 11:37:05
