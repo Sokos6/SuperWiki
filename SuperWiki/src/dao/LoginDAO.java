@@ -23,8 +23,19 @@ public class LoginDAO {
 	
 	public void addFavorites(SuperPersons sp, User user){
 		Favorite fav = new Favorite(user, sp);
+		System.out.println(fav);
+		if(!(user.getFavorites().contains(fav))){
+			System.out.println("in if statement" + fav);
+			for( Favorite favorite : user.getFavorites()) {
+				System.out.println("in foreach");
+				if(!(fav.equals(favorite))){
+					em.persist(fav);
+					break;
+				}
+			}
+			
+		}
 		user.addFavorites(fav);
-		em.persist(fav);
 	}
 
 	public void deleteFavorite(SuperPersons sp, User user)
