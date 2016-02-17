@@ -12,11 +12,13 @@ import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.NamedQuery;
 import javax.persistence.OneToMany;
 import javax.persistence.Table;
 
 @Entity
 @Table(name = "user")
+@NamedQuery(name = "User.getAllUsers", query = "select u from User u")
 public class User
 {
 	@Id
@@ -30,7 +32,7 @@ public class User
 	private Date timeStamp;
 	@OneToMany(mappedBy = "user")
 	private List<Comment> comments = new ArrayList<Comment>();
-	@OneToMany(mappedBy="user", fetch=FetchType.EAGER)
+	@OneToMany(mappedBy = "user", fetch = FetchType.EAGER)
 	private Set<Favorite> favorites = new LinkedHashSet<Favorite>();
 
 	public int getId()
@@ -92,22 +94,38 @@ public class User
 	{
 		this.comments = comments;
 	}
+
 	public Set<Favorite> getFavorites()
 	{
 		return favorites;
 	}
+
 	public void setFavorites(Set<Favorite> favorites)
 	{
 		this.favorites = favorites;
 	}
-	public void addFavorites(Favorite fav){
-		if(!favorites.contains(fav)){
+
+	public void addFavorites(Favorite fav)
+	{
+		if (!favorites.contains(fav))
+		{
 			favorites.add(fav);
 		}
 	}
-	public void removeFavorites(Favorite fav){
-		if(favorites.contains(fav)){
+
+	public void removeFavorites(Favorite fav)
+	{
+		if (favorites.contains(fav))
+		{
 			favorites.remove(fav);
 		}
+	}
+	public boolean isAdmin()
+	{
+		if (username.equals("admin") && password.equals("admin"))
+		{
+			return true;
+		}
+		return false;
 	}
 }

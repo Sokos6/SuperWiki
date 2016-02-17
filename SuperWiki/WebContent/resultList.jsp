@@ -5,9 +5,10 @@
 <html>
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
-<title>Insert title here</title>
+<title>Character Results</title>
 </head>
 <body>
+	<p>Logged in as: ${user.username}</p>
 	<table>
 	<c:forEach var="results" items="${result}">
 		<tr>
