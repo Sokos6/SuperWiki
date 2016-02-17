@@ -19,20 +19,20 @@ import javax.persistence.Table;
 
 @Entity
 @Table(name = "user")
-public class User {
+public class User
+{
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private int id;
 	private String username;
 	private String email;
 	private String password;
-	
 
 	@Column(name = "create_time")
 	private Date timeStamp;
 	@OneToMany(mappedBy = "user")
 	private List<Comment> comments = new ArrayList<Comment>();
-	@OneToMany(mappedBy="user", fetch=FetchType.EAGER)
+	@OneToMany(mappedBy = "user", fetch = FetchType.EAGER)
 	private List<Favorite> favorites = new ArrayList<Favorite>();
 
 	public int getId()
@@ -84,21 +84,22 @@ public class User {
 	{
 		this.timeStamp = timeStamp;
 	}
+
 	public List<Comment> getComments()
 	{
 		return comments;
 	}
-	
+
 	public void setComments(List<Comment> comments)
 	{
 		this.comments = comments;
 	}
-	
+
 	public List<Favorite> getFavorites()
 	{
 		return favorites;
 	}
-	
+
 	public void setFavorites(List<Favorite> favorites)
 	{
 		this.favorites = favorites;
