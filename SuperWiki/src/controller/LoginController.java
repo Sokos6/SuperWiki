@@ -52,6 +52,7 @@ public class LoginController {
     public ModelAndView addFav(@RequestParam("selectionid") int id, @ModelAttribute("user") User user) {
     	SuperPersons sp = superDao.getById(id);
     	loginDao.addFavorites(sp, user);
+    	user = loginDao.refreshUser(user);
     	ModelAndView mv = new ModelAndView();  
     	mv.setViewName("profile.jsp");
     	mv.addObject("user", user);

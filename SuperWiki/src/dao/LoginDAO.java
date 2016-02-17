@@ -24,6 +24,7 @@ public class LoginDAO {
 	public void addFavorites(SuperPersons sp, User user){
 		Favorite fav = new Favorite(user, sp);
 		user.addFavorites(fav);
+		em.persist(fav);
 	}
 
 	public void deleteFavorite(SuperPersons sp, User user)
@@ -33,6 +34,7 @@ public class LoginDAO {
 		System.out.println(query);
 		Favorite fav = em.createQuery(query, Favorite.class).getSingleResult();
 		user.removeFavorites(fav);
+		em.remove(fav);
 	}
 	public User refreshUser(User user){
 		user = em.merge(user);
