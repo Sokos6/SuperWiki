@@ -9,8 +9,8 @@
         <class>superHeroTest.SuperPersons</class>
         <class>superHeroTest.SuperPersonType</class>
         <class>superHeroTest.SuperTeam</class>
-        <class>data.User</class>
-        <class>data.Comment</class>
+        <class>superHeroTest.User</class>
+        <class>superHeroTest.Comment</class>
         <properties>
             <property name="javax.persistence.jdbc.url" value="jdbc:mysql://localhost:3306/superwiki" />
             <property name="javax.persistence.jdbc.user" value="root" />

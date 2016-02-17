@@ -1,10 +1,8 @@
 package superHeroTest;
 
-import java.sql.Date;
 import java.util.ArrayList;
 import java.util.List;
 
-import javax.persistence.CascadeType;
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.EnumType;
@@ -24,7 +22,7 @@ import javax.persistence.Table;
 @Entity
 @Table(name = "superpersons")
 @NamedQueries({ @NamedQuery(name = "SuperPersons.getName", query = "select s FROM SuperPersons s WHERE s.name = :name"),
-		@NamedQuery(name = "SuperPersons.getAllSuperHeros", query="select s from SuperPersons s WHERE s.superType = :supertype")})
+		@NamedQuery(name = "SuperPersons.getAllSuperHeros", query = "select s from SuperPersons s WHERE s.superType = :supertype") })
 
 public class SuperPersons {
 	@Id
@@ -44,23 +42,17 @@ public class SuperPersons {
 	private String publisher;
 	@Enumerated(EnumType.STRING)
 	private SuperType superType;
-	 @ManyToMany
-	 @JoinTable(name = "nemesis", joinColumns = @JoinColumn(name =
-	 "superperson_id") , inverseJoinColumns = @JoinColumn(name = "nemesis_id")
-	 )
-	 private List<SuperPersons> nemesis = new ArrayList<SuperPersons>();
-	@Override
-	public String toString()
+	@ManyToMany
+	@JoinTable(name = "nemesis", joinColumns = @JoinColumn(name = "superperson_id") , inverseJoinColumns = @JoinColumn(name = "nemesis_id") )
+	private List<SuperPersons> nemesis = new ArrayList<SuperPersons>();
+	@OneToMany(mappedBy = "superPerson")
+	private List<Comment> comments = new ArrayList<Comment>();
+
+	public SuperPersons()
 	{
-		return "SuperPersons [id=" + id + ", name=" + name + ", alias=" + alias +"]";
+
 	}
 
-	
-	
-	public SuperPersons(){
-		
-	}
-	
 	public int getId()
 	{
 		return id;
@@ -121,16 +113,16 @@ public class SuperPersons {
 		this.origin = origin;
 	}
 
-	 public String getPublisher()
-	 {
-	 return publisher;
-	 }
-	
-	 public void setPublisher(String publisher)
-	 {
-	 this.publisher = publisher;
-	 }
-	
+	public String getPublisher()
+	{
+		return publisher;
+	}
+
+	public void setPublisher(String publisher)
+	{
+		this.publisher = publisher;
+	}
+
 	public SuperTeam getTeam()
 	{
 		return team;
@@ -150,12 +142,31 @@ public class SuperPersons {
 	{
 		this.nemesis = nemesis;
 	}
+
 	public SuperType getSuperType()
 	{
 		return superType;
 	}
+
 	public void setSuperType(SuperType superType)
 	{
 		this.superType = superType;
 	}
+
+	public List<Comment> getComments()
+	{
+		return comments;
+	}
+
+	public void setComments(List<Comment> comments)
+	{
+		this.comments = comments;
+	}
+
+	@Override
+	public String toString()
+	{
+		return "SuperPersons [id=" + id + ", name=" + name + ", alias=" + alias + "]";
+	}
+
 }

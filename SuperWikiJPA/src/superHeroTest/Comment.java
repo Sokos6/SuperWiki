@@ -23,7 +23,22 @@ public class Comment
 	private String message;
 	@Column(name="created")
 	private Date dateTime;
+	@ManyToOne
+	@JoinColumn(name="superpersons_id")
+	private SuperPersons superPerson;
 	
+	public SuperPersons getSuperPerson()
+	{
+		return superPerson;
+	}
+	public void setSuperPerson(SuperPersons superPerson)
+	{
+		this.superPerson = superPerson;
+	}
+	public void setUser(User user)
+	{
+		this.user = user;
+	}
 	public int getId()
 	{
 		return id;

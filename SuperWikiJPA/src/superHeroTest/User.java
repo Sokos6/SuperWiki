@@ -1,5 +1,6 @@
 package superHeroTest;
 
+import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
 
@@ -23,13 +24,15 @@ public class User {
 	private String username;
 	private String email;
 	private String password;
+	
+
 	@Column(name = "create_time")
 	private Date timeStamp;
 	@OneToMany(mappedBy = "user")
-	private List<Comment> comments;
+	private List<Comment> comments = new ArrayList<Comment>();
 	@ManyToMany
 	@JoinTable(name = "favorite_superpersons", joinColumns = @JoinColumn(name = "user_id") , inverseJoinColumns = @JoinColumn(name = "superpersons_id") )
-	private List<SuperPersons> favorites;
+	private List<SuperPersons> favorites = new ArrayList<SuperPersons>();
 
 	public int getId()
 	{
@@ -79,5 +82,24 @@ public class User {
 	public void setTimeStamp(Date timeStamp)
 	{
 		this.timeStamp = timeStamp;
+	}
+	public List<Comment> getComments()
+	{
+		return comments;
+	}
+	
+	public void setComments(List<Comment> comments)
+	{
+		this.comments = comments;
+	}
+	
+	public List<SuperPersons> getFavorites()
+	{
+		return favorites;
+	}
+	
+	public void setFavorites(List<SuperPersons> favorites)
+	{
+		this.favorites = favorites;
 	}
 }
