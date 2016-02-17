@@ -81,4 +81,14 @@ public class LoginDAO
 	{
 		return em.createNamedQuery("User.getAllUsers", User.class).getResultList();
 	}
+	public User getUser(int id)
+	{
+		return em.find(User.class, id);
+	}
+	public void deleteUser(User user)
+	{
+		user = refreshUser(user);
+		em.remove(user);
+	}
+	
 }

@@ -1,5 +1,6 @@
 package superHeroTest;
 
+import javax.persistence.CascadeType;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
@@ -17,7 +18,7 @@ public class Favorite {
 	@ManyToOne
 	@JoinColumn(name="superpersons_id")
 	private SuperPersons superPerson;
-	@ManyToOne
+	@ManyToOne(cascade = CascadeType.PERSIST)
 	@JoinColumn(name="user_id")
 	private User user;
 	
