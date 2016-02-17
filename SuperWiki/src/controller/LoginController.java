@@ -63,7 +63,7 @@ public class LoginController {
     	SuperPersons sp = superDao.getById(id);
     	System.out.println(sp.getName());
     	loginDao.deleteFavorite(sp, user);
-    	
+    	user = loginDao.refreshUser(user);
     	ModelAndView mv = new ModelAndView();
     	mv.setViewName("profile.jsp");
     	mv.addObject("user", user);

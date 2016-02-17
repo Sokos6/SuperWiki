@@ -2,18 +2,16 @@ package superHeroTest;
 
 import java.util.ArrayList;
 import java.util.Date;
+import java.util.LinkedHashSet;
 import java.util.List;
+import java.util.Set;
 
-import javax.persistence.CascadeType;
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
-import javax.persistence.JoinColumn;
-import javax.persistence.JoinTable;
-import javax.persistence.ManyToMany;
 import javax.persistence.OneToMany;
 import javax.persistence.Table;
 
@@ -33,7 +31,7 @@ public class User {
 	@OneToMany(mappedBy = "user")
 	private List<Comment> comments = new ArrayList<Comment>();
 	@OneToMany(mappedBy="user", fetch=FetchType.EAGER)
-	private List<Favorite> favorites = new ArrayList<Favorite>();
+	private Set<Favorite> favorites = new LinkedHashSet<Favorite>();
 
 	public int getId()
 	{
@@ -94,20 +92,23 @@ public class User {
 		this.comments = comments;
 	}
 	
-	public List<Favorite> getFavorites()
+	public Set<Favorite> getFavorites()
 	{
 		return favorites;
 	}
 	
-	public void setFavorites(List<Favorite> favorites)
+	public void setFavorites(Set<Favorite> favorites)
 	{
 		this.favorites = favorites;
 	}
-
-	@Override
-	public String toString()
-	{
-		return "User [id=" + id + ", username=" + username + ", email=" + email + ", password=" + password
-				+ ", timeStamp=" + timeStamp + ", comments=" + comments + ", favorites=" + favorites + "]";
+	public void addFavorites(Favorite fav){
+		if(!favorites.contains(fav)){
+			favorites.add(fav);
+		}
+	}
+	public void removeFavorites(Favorite fav){
+		if(favorites.contains(fav)){
+			favorites.remove(fav);
+		}
 	}
 }
