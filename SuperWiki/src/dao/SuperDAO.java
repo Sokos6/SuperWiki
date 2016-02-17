@@ -45,6 +45,5 @@ public class SuperDAO {
 		sperson.setPublisher(sp.getPublisher());
 		sperson.setSuperType(sp.getSuperType());
 		em.persist(sperson);
-		
 	}
 }
