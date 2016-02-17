@@ -18,59 +18,68 @@ import superHeroTest.User;
 
 @Controller
 @SessionAttributes("user")
-public class LoginController {
+public class LoginController
+{
 	@Autowired
 	private LoginDAO loginDao;
 	@Autowired
 	private SuperDAO superDao;
 	User user;
-	
+
 	@ModelAttribute("user")
 	public User createUser()
 	{
 		user = new User();
 		return user;
 	}
-	
 
-    @RequestMapping(path = "login.do", method = RequestMethod.GET)
-    public String showLoginPage() {
-    	return "login.jsp";
-    }
-    @RequestMapping(path = "login.do", method = RequestMethod.GET, params = {"username", "password"})
-    public ModelAndView homePage(@RequestParam("username") String username, @RequestParam("password") String password, @ModelAttribute("user") User user) 
-    {
-    	System.out.println(username+" "+password);
-    	user = loginDao.getUser(username, password);
-    	System.out.println(user.getId());
-    	ModelAndView mv = new ModelAndView();
-    	mv.setViewName("index.html");
+	@RequestMapping(path = "login.do", method = RequestMethod.GET)
+	public String showLoginPage()
+	{
+		return "login.jsp";
+	}
+
+	@RequestMapping(path = "login.do", method = RequestMethod.GET, params = { "username", "password" })
+	public ModelAndView homePage(@RequestParam("username") String username, @RequestParam("password") String password,
+			@ModelAttribute("user") User user)
+	{
+		System.out.println(username + " " + password);
+		user = loginDao.getUser(username, password);
+		System.out.println(user.getId());
+		ModelAndView mv = new ModelAndView();
+		mv.setViewName("index.html");
 		mv.addObject("user", user);
-    	return mv;
-    }
-    @RequestMapping(path = "addFav.do", method = RequestMethod.POST)
-    public ModelAndView addFav(@RequestParam("selectionid") int id, @ModelAttribute("user") User user) {
-    	SuperPersons sp = superDao.getById(id);
-    	loginDao.addFavorites(sp, user);
-    	ModelAndView mv = new ModelAndView();  
-    	mv.setViewName("profile.jsp");
-    	mv.addObject("user", user);
-    	return mv;
-    }
-    @RequestMapping(path="deleteFavorite.do", method=RequestMethod.POST)
-    public ModelAndView deleteFav(@RequestParam("deleteid") int id, @ModelAttribute("user") User user){
-    	System.out.println("deleteid" + id);
-    	SuperPersons sp = superDao.getById(id);
-    	System.out.println(sp.getName());
-    	loginDao.deleteFavorite(sp, user);
-    	user = loginDao.refreshUser(user);
-    	ModelAndView mv = new ModelAndView();
-    	mv.setViewName("profile.jsp");
-    	mv.addObject("user", user);
-    	return mv;
-    }
-    @RequestMapping(path="addComment.do", method=RequestMethod.POST)
-	public ModelAndView addComment(Comment comment){
+		return mv;
+	}
+
+	@RequestMapping(path = "addFav.do", method = RequestMethod.POST)
+	public ModelAndView addFav(@RequestParam("selectionid") int id, @ModelAttribute("user") User user)
+	{
+		SuperPersons sp = superDao.getById(id);
+		loginDao.addFavorites(sp, user);
+		ModelAndView mv = new ModelAndView();
+		mv.setViewName("profile.jsp");
+		mv.addObject("user", user);
+		return mv;
+	}
+
+	@RequestMapping(path = "deleteFavorite.do", method = RequestMethod.POST)
+	public ModelAndView deleteFav(@RequestParam("deleteid") int id, @ModelAttribute("user") User user)
+	{
+		System.out.println("deleteid" + id);
+		SuperPersons sp = superDao.getById(id);
+		System.out.println(sp.getName());
+		loginDao.deleteFavorite(sp, user);
+		user = loginDao.refreshUser(user);
+		ModelAndView mv = new ModelAndView();
+		mv.setViewName("profile.jsp");
+		mv.addObject("user", user);
+		return mv;
+	}
+
+	@RequestMapping(path = "addComment.do", method = RequestMethod.POST)
+	public ModelAndView addComment(Comment comment)
+	{
 		return null;
 	}
 }

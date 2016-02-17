@@ -29,17 +29,33 @@ public class LoginDAO
 
 	public void deleteFavorite(SuperPersons sp, User user)
 	{
-		String query = "SELECT f from Favorite f where f.superPerson.id = " + sp.getId() + " AND f.user.id= "
-				+ user.getId() + "";
+		String query = "SELECT f from Favorite f where f.superPerson.id = " + sp.getId() + " AND f.user.id= " + user.getId() + "";
 		System.out.println("before create query");
 		System.out.println(query);
-		Favorite fav = em.createQuery(query, Favorite.class).getSingleResult();
-<<<<<<< HEAD
-		user = refreshUser(user);
-
-=======
-		user.removeFavorites(fav);
->>>>>>> bc2d8293d7a06478085be3849986f3f2a1067df2
+//		Favorite fav = (Favorite) em.createQuery(query, Favorite.class);
+		Favorite fav = em.find(Favorite.class, sp.getId());
+		for (Favorite favorite : user.getFavorites())
+		{
+			System.out.print("favorite = ");
+			System.out.println(favorite.toString());
+			if (fav.getId() == (favorite.getId()))
+			{
+				System.out.println(favorite);
+				user.removeFavorites(favorite);
+			}
+		}
+		System.out.print("fav = " + fav);
+//		((User) user.getFavorites()).removeFavorites(fav);
+//		user.removeFavorites(fav);
+//		for (Favorite favorite : user.getFavorites())
+//		{
+//			System.out.print("favorite = ");
+//			System.out.println(favorite);
+//			if (fav.equals(favorite))
+//			{
+//				user.removeFavorites(fav);
+//			}
+//		}
 	}
 
 	public User refreshUser(User user)

@@ -4,9 +4,10 @@
 <html>
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
-<title>IIn Profile</title>
+<title>In Profile</title>
 </head>
 <body>
+	<p>Logged in as: ${user.username}</p>
 	<table>
 <%-- 	<h1>${user}</h1>
  --%>	<c:forEach var="results" items="${user.favorites}">
@@ -18,10 +19,6 @@
 		</tr>
 	</c:forEach>
 	</table>
-<<<<<<< HEAD
-	<a href = "index.html">home</a>
-=======
 	<a href="index.html">HOME</a>
->>>>>>> ac87657da48c27714c9c563107bedf78ae36951a
 </body>
 </html>

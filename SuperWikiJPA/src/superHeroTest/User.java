@@ -30,13 +30,8 @@ public class User
 	private Date timeStamp;
 	@OneToMany(mappedBy = "user")
 	private List<Comment> comments = new ArrayList<Comment>();
-<<<<<<< HEAD
-	@OneToMany(mappedBy = "user", fetch = FetchType.EAGER)
-	private List<Favorite> favorites = new ArrayList<Favorite>();
-=======
 	@OneToMany(mappedBy="user", fetch=FetchType.EAGER)
 	private Set<Favorite> favorites = new LinkedHashSet<Favorite>();
->>>>>>> bc2d8293d7a06478085be3849986f3f2a1067df2
 
 	public int getId()
 	{
@@ -97,23 +92,11 @@ public class User
 	{
 		this.comments = comments;
 	}
-<<<<<<< HEAD
-
-	public List<Favorite> getFavorites()
-	{
-		return favorites;
-	}
-
-	public void setFavorites(List<Favorite> favorites)
-=======
-	
 	public Set<Favorite> getFavorites()
 	{
 		return favorites;
 	}
-	
 	public void setFavorites(Set<Favorite> favorites)
->>>>>>> bc2d8293d7a06478085be3849986f3f2a1067df2
 	{
 		this.favorites = favorites;
 	}
