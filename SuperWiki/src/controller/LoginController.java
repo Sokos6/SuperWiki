@@ -51,39 +51,6 @@ public class LoginController
 		mv.addObject("user", user);
 		return mv;
 	}
-
-	@RequestMapping(path = "addFav.do", method = RequestMethod.POST)
-	public ModelAndView addFav(@RequestParam("selectionid") int id, @ModelAttribute("user") User user)
-	{
-		SuperPersons sp = superDao.getById(id);
-		loginDao.addFavorites(sp, user);
-		ModelAndView mv = new ModelAndView();
-		mv.setViewName("profile.jsp");
-		mv.addObject("user", user);
-		return mv;
-	}
-
-	@RequestMapping(path = "deleteFavorite.do", method = RequestMethod.POST)
-	public ModelAndView deleteFav(@RequestParam("deleteid") int id, @ModelAttribute("user") User user)
-	{
-		System.out.println("deleteid" + id);
-		SuperPersons sp = superDao.getById(id);
-		System.out.println(sp.getName());
-		loginDao.deleteFavorite(sp, user);
-		user = loginDao.refreshUser(user);
-		ModelAndView mv = new ModelAndView();
-		mv.setViewName("profile.jsp");
-		mv.addObject("user", user);
-<<<<<<< HEAD
-		return mv;
-	}
-
-	@RequestMapping(path = "addComment.do", method = RequestMethod.POST)
-	public ModelAndView addComment(Comment comment)
-	{
-=======
-    	return mv;
-    }
     @RequestMapping(path = "addFav.do", method = RequestMethod.POST)
     public ModelAndView addFav(@RequestParam("selectionid") int id, @ModelAttribute("user") User user) {
     	SuperPersons sp = superDao.getById(id);
@@ -108,7 +75,6 @@ public class LoginController
     }
     @RequestMapping(path="addComment.do", method=RequestMethod.POST)
 	public ModelAndView addComment(Comment comment){
->>>>>>> b4e3bb70bb7344dadc6f0e2111b36a3a56b96394
 		return null;
 	}
 }
