@@ -34,4 +34,17 @@ public class SuperDAO {
 	{
 		em.persist(sp);
 	}
+	public void updateCharacter(SuperPersons sp)
+	{
+		SuperPersons sperson = getById(sp.getId());
+		sperson.setName(sp.getName());
+		sperson.setAlias(sp.getAlias());
+		sperson.setCreator(sp.getCreator());
+		sperson.setFirstAppearance(sp.getFirstAppearance());
+		sperson.setOrigin(sp.getOrigin());
+		sperson.setPublisher(sp.getPublisher());
+		sperson.setSuperType(sp.getSuperType());
+		em.persist(sperson);
+		
+	}
 }

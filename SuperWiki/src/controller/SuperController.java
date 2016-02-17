@@ -74,8 +74,6 @@ public class SuperController {
 	@RequestMapping(path = "addSuperhero.do", method = RequestMethod.POST)
 	public ModelAndView addSuperhero(SuperPersons sp, @RequestParam("good") boolean superhero)
 	{
-
-		
 		if (superhero) {
 			sp.setSuperType(SuperType.superhero);
 
@@ -86,6 +84,24 @@ public class SuperController {
 		ModelAndView mv = getByName(sp.getName());
 		return mv;
 	}
-	
+	@RequestMapping(path="updateCharacter.do", method = RequestMethod.GET)
+	public ModelAndView updateForm(@RequestParam("id") int id){
+		SuperPersons sp = superDao.getById(id);
+		ModelAndView mv = new ModelAndView();
+		mv.setViewName("updateCharacter.jsp");
+		mv.addObject("character", sp);
+		return mv;
+	}
+	@RequestMapping(path="updateCharacter.do", method = RequestMethod.POST)
+	public ModelAndView updateCharacter(SuperPersons sp,  @RequestParam("good") boolean superhero){
+		if (superhero) {
+			sp.setSuperType(SuperType.superhero);
 
+		} else {
+			sp.setSuperType(SuperType.villain);
+		}
+		superDao.updateCharacter(sp);
+		ModelAndView mv = getById(sp.getId());
+		return mv;
+	}
 }

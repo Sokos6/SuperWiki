@@ -7,21 +7,22 @@
 <title>Insert title here</title>
 </head>
 <body>
-	<form action="addSuperhero.do" method="post">
-
-			Name:<input type="text" name="name" value="${character.name }"/>
+	<form action="updateCharacter.do" method="post">
+	<input type="hidden" name="id" value="${character.id }"/>
+			Name:<input type="text" name="name" value="${character.name}"/>
 		<br>
-			Alias:<input type = "text" name = "alias" value="${character.alias }"/>
+			Alias:<input type = "text" name = "alias" value="${character.alias}"/>
 		<br>
 			Creator<input type="text" name="creator" value="${character.creator }"/>
+			First Appearance:<input type="text" name="firstAppearance" value="${character.firstAppearance }"/>
 		<br>
-			Appearance:<textarea rows="4" cols="100" name="appearance">${character.appearance} </textarea>
+			Origin:<textarea rows="4" cols="100" name="origin">${character.origin} </textarea>
 		<br>
-			Costume:<textarea rows="4" cols="100" name="costume"></textarea>
+		Publisher:<input type="text" name="publisher" value="${character.publisher }"/>
 		<br>
 		<input type="radio" name="good" value="true">superhero
 		<input type="radio" name="good" value="false">villain
-		<input type = "submit" value = "Create"/>
+		<input type = "submit" value = "Update"/>
 	</form>
 </body>
 </html>
