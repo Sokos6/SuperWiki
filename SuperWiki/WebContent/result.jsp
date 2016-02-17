@@ -5,9 +5,10 @@
 <html>
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
-<title>Insert title here</title>
+<title>${result.name}</title>
 </head>
 <body>
+	<p>Logged in as: ${user.username}</p>
 	<p>${result.name}</p>
 	<p>${result.alias}</p>
 	<p>${result.creator }</p>

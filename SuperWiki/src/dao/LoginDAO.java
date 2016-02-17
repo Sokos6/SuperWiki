@@ -77,4 +77,8 @@ public class LoginDAO
 		em.refresh(user);
 		return user;
 	}
+	public List<User> getAllUsers()
+	{
+		return em.createNamedQuery("User.getAllUsers", User.class).getResultList();
+	}
 }
