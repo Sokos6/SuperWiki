@@ -1,5 +1,7 @@
 package dao;
 
+import java.util.List;
+
 import javax.persistence.EntityManager;
 import javax.persistence.PersistenceContext;
 
@@ -23,7 +25,23 @@ public class LoginDAO
 	
 	public void addFavorites(SuperPersons sp, User user){
 		Favorite fav = new Favorite(user, sp);
-		user.getFavorites().add(fav);
-		em.persist(fav);
+		user.addFavorites(fav);
+		user = refreshUser(user);
+	}
+
+	public void deleteFavorite(SuperPersons sp, User user)
+	{
+		String query = "SELECT f from Favorite f where f.superPerson.id = " + sp.getId() + " AND f.user.id= " + user.getId() + "";
+		System.out.println("before create query");
+		System.out.println(query);
+		Favorite fav = em.createQuery(query, Favorite.class).getSingleResult();
+		user = refreshUser(user);
+		
+		
+	}
+	public User refreshUser(User user){
+		user = em.merge(user);
+		em.refresh(user);
+		return user;
 	}
 }
