@@ -4,9 +4,10 @@
 <html>
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
-<title>IIn Profile</title>
+<title>In Profile</title>
 </head>
 <body>
+	<p>Logged in as: ${user.username}</p>
 	<table>
 <%-- 	<h1>${user}</h1>
  --%>	<c:forEach var="results" items="${user.favorites}">

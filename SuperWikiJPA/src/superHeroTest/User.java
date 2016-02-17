@@ -17,14 +17,14 @@ import javax.persistence.Table;
 
 @Entity
 @Table(name = "user")
-public class User {
+public class User
+{
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private int id;
 	private String username;
 	private String email;
 	private String password;
-	
 
 	@Column(name = "create_time")
 	private Date timeStamp;
@@ -82,21 +82,20 @@ public class User {
 	{
 		this.timeStamp = timeStamp;
 	}
+
 	public List<Comment> getComments()
 	{
 		return comments;
 	}
-	
+
 	public void setComments(List<Comment> comments)
 	{
 		this.comments = comments;
 	}
-	
 	public Set<Favorite> getFavorites()
 	{
 		return favorites;
 	}
-	
 	public void setFavorites(Set<Favorite> favorites)
 	{
 		this.favorites = favorites;
