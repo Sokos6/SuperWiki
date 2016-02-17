@@ -11,36 +11,16 @@ public class SuperTest {
 	{
 		EntityManagerFactory emf = Persistence.createEntityManagerFactory("MyPU");
 		EntityManager em = emf.createEntityManager();
-		// em.getTransaction().begin();
+		 em.getTransaction().begin();
 		System.out.println("before query");
 //		SuperTeam st = em.find(SuperTeam.class, 1);
-		String query = "select u from User u where u.username = 'admin' and u.password = 'admin'";
-		System.out.println(query);
-		User user = em.createQuery(query, User.class).getSingleResult();
-		System.out.println(user.getUsername());
-		// List<SuperPersons> spt = em.createQuery("select s from SuperPersons s
-		// JOIN SuperPersonType sp ON s.id = sp.superPerson.id WHERE
-		// sp.superType = :supertype",
-		// SuperPersons.class).setParameter("supertype",
-		// SuperType.superhero).getResultList();
-		// for (SuperPersons superPerson : spt) {
-		// System.out.println(superPerson.getName());
-		// }
-		// sp.setName("Captain America");
-		// List<SuperPersons> members = st.getMembers();
-		// for (SuperPersons superPersons : members) {
-		// System.out.println(superPersons.getName());
-		// }
-		// SuperPersons sp = new SuperPersons();
-		// sp.setName("Captain America");
-		// sp.setCreated(1941);
-		// sp.setCreator("Stan Lee");
-		// em.persist(sp);
-
-		// SuperPersons sp = em.find(SuperPersons.class, 1);
-		// em.remove(sp);
-
-		// em.getTransaction().commit();
+		User user = em.find(User.class, 1);
+		SuperPersons superPerson = em.find(SuperPersons.class, 1);
+		Favorite fav = new Favorite(user, superPerson);
+		System.out.println(em.contains(fav));
+		em.persist(fav);
+		System.out.println(em.contains(fav));
+		em.getTransaction().commit();
 		em.close();
 		emf.close();
 	}

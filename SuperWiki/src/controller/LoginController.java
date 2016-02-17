@@ -12,6 +12,7 @@ import org.springframework.web.servlet.ModelAndView;
 import dao.LoginDAO;
 import dao.SuperDAO;
 import superHeroTest.Comment;
+import superHeroTest.Favorite;
 import superHeroTest.SuperPersons;
 import superHeroTest.User;
 
@@ -41,19 +42,17 @@ public class LoginController {
     {
     	System.out.println(username+" "+password);
     	user = loginDao.getUser(username, password);
+    	System.out.println(user.getId());
     	ModelAndView mv = new ModelAndView();
     	mv.setViewName("index.html");
 		mv.addObject("user", user);
     	return mv;
     }
     @RequestMapping(path = "addFav.do", method = RequestMethod.POST)
-    public ModelAndView addFav(@RequestParam("id") int id, @ModelAttribute("user") User user) {
-    	System.out.println("here");
+    public ModelAndView addFav(@RequestParam("selectionid") int id, @ModelAttribute("user") User user) {
     	SuperPersons sp = superDao.getById(id);
-    	System.out.println(sp.getName());
-    	user.getFavorites().add(sp);
-    	System.out.println(user.getFavorites().get(0));
-    	ModelAndView mv = new ModelAndView();    	
+    	loginDao.addFavorites(sp, user);
+    	ModelAndView mv = new ModelAndView();  
     	mv.setViewName("profile.jsp");
     	mv.addObject("user", user);
     	return mv;
