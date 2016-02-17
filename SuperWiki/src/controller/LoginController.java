@@ -14,7 +14,6 @@ import org.springframework.web.servlet.ModelAndView;
 import dao.LoginDAO;
 import dao.SuperDAO;
 import superHeroTest.Comment;
-import superHeroTest.Favorite;
 import superHeroTest.SuperPersons;
 import superHeroTest.User;
 
@@ -99,14 +98,16 @@ public class LoginController
 		return mv;
 	}
 	@RequestMapping(path = "deleteUser.do", method = RequestMethod.POST, params = "deleteUserid")
-	public ModelAndView deleteUser(@ModelAttribute("user") User user, @ModelAttribute("admin") Boolean admin)
+	public ModelAndView deleteUser(@RequestParam("deleteUserid") int id, @ModelAttribute("user") User user, @ModelAttribute("admin") Boolean admin)
 	{
-		List<User> users = loginDao.getAllUsers();
-		ModelAndView mv = new ModelAndView();
-		mv.setViewName("profile.jsp");
-		mv.addObject("user", user);
-		mv.addObject("admin", admin);
-		mv.addObject("users", users);
+		User user1 = loginDao.getUser(id);
+		loginDao.deleteUser(user1);
+//		user = loginDao.refreshUser(user);
+		ModelAndView mv = profile(user, admin);
+//		new ModelAndView();
+//		mv.setViewName("profile.jsp");
+//		mv.addObject("admin", admin);
+//		mv.addObject("user", user);
 		return mv;
 	}
 	@RequestMapping(path = "addComment.do", method = RequestMethod.POST)
