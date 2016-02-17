@@ -57,6 +57,18 @@ public class LoginController {
     	mv.addObject("user", user);
     	return mv;
     }
+    @RequestMapping(path="deleteFavorite.do", method=RequestMethod.POST)
+    public ModelAndView deleteFav(@RequestParam("deleteid") int id, @ModelAttribute("user") User user){
+    	System.out.println("deleteid" + id);
+    	SuperPersons sp = superDao.getById(id);
+    	System.out.println(sp.getName());
+    	loginDao.deleteFavorite(sp, user);
+    	
+    	ModelAndView mv = new ModelAndView();
+    	mv.setViewName("profile.jsp");
+    	mv.addObject("user", user);
+    	return mv;
+    }
     @RequestMapping(path="addComment.do", method=RequestMethod.POST)
 	public ModelAndView addComment(Comment comment){
 		return null;

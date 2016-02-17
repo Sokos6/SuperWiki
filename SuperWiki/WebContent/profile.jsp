@@ -13,8 +13,11 @@
 		<tr>
 			<td><a href="selectID.do?id=${results.superPerson.id}">${results.superPerson.name}</a></td>
 			<td>${results.superPerson.alias}</td>
+			<td><form action="deleteFavorite.do" method="post"><input type="hidden" name="deleteid" value="${results.superPerson.id }"> 
+			<input type="submit" value="Delete"></form>
 		</tr>
 	</c:forEach>
 	</table>
+	<a href="index.html">HOME</a>
 </body>
 </html>

@@ -3,6 +3,7 @@
 	<name>SuperWiki</name>
 	<comment></comment>
 	<projects>
+		<project>SuperWikiJPA</project>
 	</projects>
 	<buildSpec>
 		<buildCommand>
