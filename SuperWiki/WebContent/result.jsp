@@ -33,7 +33,7 @@
 	</form>
 	<form action = "addFav.do" method = "POST">
 		<input type = "submit" value = "favorite"/>
-		<input type = "hidden" name="id" value = "${result.id}" />
+		<input type = "hidden" name="selectionid" value = "${result.id}" />
 	</form>
 </body>
 </html>

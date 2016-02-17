@@ -58,9 +58,10 @@ DROP TABLE IF EXISTS `favorite_superpersons`;
 /*!40101 SET @saved_cs_client     = @@character_set_client */;
 /*!40101 SET character_set_client = utf8 */;
 CREATE TABLE `favorite_superpersons` (
+	`id` int(11) NOT NULL AUTO_INCREMENT,
   `superpersons_id` int(11) NOT NULL,
   `user_id` int(11) NOT NULL,
-  PRIMARY KEY (`superpersons_id`,`user_id`),
+  PRIMARY KEY (`id`),
   KEY `fk_superpersons_has_user_user1_idx` (`user_id`),
   KEY `fk_superpersons_has_user_superpersons1_idx` (`superpersons_id`),
   CONSTRAINT `fk_superpersons_has_user_superpersons1` FOREIGN KEY (`superpersons_id`) REFERENCES `superpersons` (`id`) ON DELETE NO ACTION ON UPDATE NO ACTION,

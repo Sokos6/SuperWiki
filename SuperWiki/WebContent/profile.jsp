@@ -4,14 +4,15 @@
 <html>
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
-<title>Insert title here</title>
+<title>IIn Profile</title>
 </head>
 <body>
 	<table>
-	<c:forEach var="results" items="${user.favorites}">
+<%-- 	<h1>${user}</h1>
+ --%>	<c:forEach var="results" items="${user.favorites}">
 		<tr>
-			<td><a href="selectID.do?id=${results.id}">${results.name}</a></td>
-			<td>${results.alias}</td>
+			<td><a href="selectID.do?id=${results.superPerson.id}">${results.superPerson.name}</a></td>
+			<td>${results.superPerson.alias}</td>
 		</tr>
 	</c:forEach>
 	</table>

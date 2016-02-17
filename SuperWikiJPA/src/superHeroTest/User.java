@@ -4,8 +4,10 @@ import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
 
+import javax.persistence.CascadeType;
 import javax.persistence.Column;
 import javax.persistence.Entity;
+import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
@@ -30,9 +32,8 @@ public class User {
 	private Date timeStamp;
 	@OneToMany(mappedBy = "user")
 	private List<Comment> comments = new ArrayList<Comment>();
-	@ManyToMany
-	@JoinTable(name = "favorite_superpersons", joinColumns = @JoinColumn(name = "user_id") , inverseJoinColumns = @JoinColumn(name = "superpersons_id") )
-	private List<SuperPersons> favorites = new ArrayList<SuperPersons>();
+	@OneToMany(mappedBy="user", fetch=FetchType.EAGER)
+	private List<Favorite> favorites = new ArrayList<Favorite>();
 
 	public int getId()
 	{
@@ -93,13 +94,20 @@ public class User {
 		this.comments = comments;
 	}
 	
-	public List<SuperPersons> getFavorites()
+	public List<Favorite> getFavorites()
 	{
 		return favorites;
 	}
 	
-	public void setFavorites(List<SuperPersons> favorites)
+	public void setFavorites(List<Favorite> favorites)
 	{
 		this.favorites = favorites;
+	}
+
+	@Override
+	public String toString()
+	{
+		return "User [id=" + id + ", username=" + username + ", email=" + email + ", password=" + password
+				+ ", timeStamp=" + timeStamp + ", comments=" + comments + ", favorites=" + favorites + "]";
 	}
 }

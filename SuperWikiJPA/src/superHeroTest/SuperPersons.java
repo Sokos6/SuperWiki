@@ -3,6 +3,7 @@ package superHeroTest;
 import java.util.ArrayList;
 import java.util.List;
 
+import javax.persistence.CascadeType;
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.EnumType;
@@ -47,6 +48,8 @@ public class SuperPersons {
 	private List<SuperPersons> nemesis = new ArrayList<SuperPersons>();
 	@OneToMany(mappedBy = "superPerson")
 	private List<Comment> comments = new ArrayList<Comment>();
+	@OneToMany(mappedBy="superPerson")
+	private List<Favorite> userfavorites;
 
 	public SuperPersons()
 	{
