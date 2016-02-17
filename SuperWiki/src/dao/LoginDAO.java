@@ -25,6 +25,7 @@ public class LoginDAO
 	{
 		Favorite fav = new Favorite(user, sp);
 		user.addFavorites(fav);
+		em.persist(fav);
 	}
 
 	public void deleteFavorite(SuperPersons sp, User user)
@@ -32,6 +33,7 @@ public class LoginDAO
 		String query = "SELECT f from Favorite f where f.superPerson.id = " + sp.getId() + " AND f.user.id= " + user.getId() + "";
 		System.out.println("before create query");
 		System.out.println(query);
+<<<<<<< HEAD
 //		Favorite fav = (Favorite) em.createQuery(query, Favorite.class);
 		Favorite fav = em.find(Favorite.class, sp.getId());
 		for (Favorite favorite : user.getFavorites())
@@ -56,6 +58,11 @@ public class LoginDAO
 //				user.removeFavorites(fav);
 //			}
 //		}
+=======
+		Favorite fav = em.createQuery(query, Favorite.class).getSingleResult();
+		user.removeFavorites(fav);
+		em.remove(fav);
+>>>>>>> b4e3bb70bb7344dadc6f0e2111b36a3a56b96394
 	}
 
 	public User refreshUser(User user)
