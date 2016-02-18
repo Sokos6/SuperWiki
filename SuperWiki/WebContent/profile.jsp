@@ -23,7 +23,7 @@
 		<c:forEach var="eachUser" items="${users}">
 			<tr>
 				<td>${eachUser.username}</td>
-				<c:if test="${eachUser.id != 1}">
+				<c:if test="${eachUser.id != 1 && eachUser.id != 7 && eachUser.id != 8 && eachUser.id != 9}">
 					<td><form action="deleteUser.do" method="post"><input type="hidden" name="deleteUserid" value="${eachUser.id}"> 
 					<input type="submit" value="Delete"></form>
 				</c:if>
