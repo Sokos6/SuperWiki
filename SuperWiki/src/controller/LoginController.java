@@ -31,6 +31,8 @@ public class LoginController
 	public User createUser()
 	{
 		user = new User();
+		user.setUsername("guest");
+		user.setPassword("guest");
 		return user;
 	}
 	@ModelAttribute("admin")
@@ -49,14 +51,25 @@ public class LoginController
 	public ModelAndView homePage(@RequestParam("username") String username, @RequestParam("password") String password, @ModelAttribute("user") User user, @ModelAttribute("admin") Boolean admin)
 	{
 		System.out.println(username + " " + password);
-		user = loginDao.getUser(username, password);
-		admin = user.isAdmin();
-		System.out.println(user.getId());
-		ModelAndView mv = new ModelAndView();
-		mv.setViewName("index.jsp");
-		mv.addObject("user", user);
-		mv.addObject("admin", admin);
-		return mv;
+		try
+		{
+			user = loginDao.getUser(username, password);			
+			admin = user.isAdmin();
+			ModelAndView mv = new ModelAndView();
+			mv.setViewName("index.jsp");
+			mv.addObject("user", user);
+			mv.addObject("admin", admin);
+			return mv;
+		}
+		catch (Exception e)
+		{	
+			user = loginDao.getUser("guest", "guest");			
+			ModelAndView mv = new ModelAndView();
+			mv.setViewName("error.jsp");
+			mv.addObject("user", user);
+			mv.addObject("admin", admin);
+			return mv;
+		}
 	}
 	@RequestMapping(path = "logout.do", method = RequestMethod.GET)
 	public String logout()
@@ -67,6 +80,7 @@ public class LoginController
 	@RequestMapping(path = "addFav.do", method = RequestMethod.POST)
 	public ModelAndView addFav(@RequestParam("selectionid") int id, @ModelAttribute("user") User user, @ModelAttribute("admin") Boolean admin)
 	{
+		System.out.println(user.getUsername() + " " + user.getPassword());
 		SuperPersons sp = superDao.getById(id);
 		loginDao.addFavorites(sp, user);
 		user = loginDao.refreshUser(user);

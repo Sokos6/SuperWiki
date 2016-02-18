@@ -22,7 +22,7 @@
 		<table>
 			<c:forEach var="comment" items="${result.comments }">
 				<tr>
-					<td>${comment.user.username}</td>
+					<td>${comment.user.username}:</td>
 					<td>${comment.message }</td>
 					<c:choose>
 						<c:when test="${admin }">
@@ -54,6 +54,7 @@
 			</c:forEach>
 		</table>
 	</c:if >
+	<%-- <c:when test="${}"> --%>
 	<form action="addComment.do" method="POST">
 		<input type="hidden" name="superPersonID" value="${result.id }" />
 		Comment:

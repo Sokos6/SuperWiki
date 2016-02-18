@@ -15,11 +15,7 @@
 	<a href="allSuperheroes.do">Superheroes</a>
 	<a href="allVillains.do">Villains</a>
 	<a href="addSuperhero.do">Add Character</a>
-	<a href="login.do">Login</a>
-	<a href="logout.do">Logout</a>
-	<%-- <a href="logout.do?username=${user.username}&password=${user.password}">Logout</a> --%>
 	<a href="profile.do">My Account</a>
-	<a href="addUser.do">Register</a>
-	
+	<a href="logout.do">Logout</a>
 </body>
 </html>
