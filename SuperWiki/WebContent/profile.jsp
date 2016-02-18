@@ -33,6 +33,6 @@
 		</c:forEach>
 		</table>
 	</c:if>
-	<a href="index.html">HOME</a>
+	<a href="index.jsp">HOME</a>
 </body>
 </html>
