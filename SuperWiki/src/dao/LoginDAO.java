@@ -23,6 +23,21 @@ public class LoginDAO
 		String query = "select u from User u where u.username = '" + username + "' and u.password = '" + password + "'";
 		return em.createQuery(query, User.class).getSingleResult();
 	}
+	public void addUser(User newUser)
+	{
+		List<User> users = em.createQuery("select u from User u", User.class).getResultList();
+		boolean match = true;
+		for (User user : users)
+		{
+			if (user.getUsername().equals(newUser.getUsername()))
+			{
+				match = false;
+				break;
+			}
+		}
+		if (match)
+			em.persist(newUser);
+	}
 
 	public void addFavorites(SuperPersons sp, User user)
 	{

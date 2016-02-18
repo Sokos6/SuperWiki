@@ -53,10 +53,34 @@ public class LoginController
 		admin = user.isAdmin();
 		System.out.println(user.getId());
 		ModelAndView mv = new ModelAndView();
-		mv.setViewName("index.html");
+		mv.setViewName("index.jsp");
 		mv.addObject("user", user);
 		mv.addObject("admin", admin);
 		return mv;
+	}
+	
+//	@RequestMapping(path = "logout.do", method = RequestMethod.GET, params = { "username", "password" })
+//	public ModelAndView logout(@RequestParam("username") String username, @RequestParam("password") String password)
+//	{
+//		
+//		user = loginDao.getUser(username, password);
+//		admin = user.isAdmin();
+//		user.setUsername(username);
+//		ModelAndView mv = new ModelAndView();
+//		mv.setViewName("index.html");
+//		mv.addObject("user", user);
+//		mv.addObject("admin", admin);
+//		return mv;
+//	}
+	@RequestMapping(path = "logout.do", method = RequestMethod.GET)
+	public String logout()
+	{
+		return "index.html";
+//		ModelAndView mv = new ModelAndView();
+//		mv.setViewName("index.html");
+//		mv.addObject("user", user);
+//		mv.addObject("admin", admin);
+//		return mv;
 	}
 
 	@RequestMapping(path = "addFav.do", method = RequestMethod.POST)
@@ -68,6 +92,22 @@ public class LoginController
 		ModelAndView mv = profile(user, admin );
 		return mv;
 	}
+	
+	@RequestMapping(path = "addUser.do", method = RequestMethod.GET)
+	public String showAddUser()
+	{
+		return "addUser.jsp";
+	}
+	
+	@RequestMapping(path = "addUser.do", method = RequestMethod.POST)
+	public ModelAndView addUser(User user)
+	{
+		loginDao.addUser(user);
+		ModelAndView mv = new ModelAndView();
+		mv.setViewName("login.jsp");
+		return mv;
+	}
+	
 
 	@RequestMapping(path = "deleteFavorite.do", method = RequestMethod.POST)
 	public ModelAndView deleteFav(@RequestParam("deleteid") int id, @ModelAttribute("user") User user, @ModelAttribute("admin") Boolean admin)
