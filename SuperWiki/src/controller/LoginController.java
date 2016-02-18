@@ -64,7 +64,6 @@ public class LoginController
 	{
 		SuperPersons sp = superDao.getById(id);
 		loginDao.addFavorites(sp, user);
-		System.out.println("back in controller");
 		user = loginDao.refreshUser(user);
 		ModelAndView mv = profile(user, admin );
 		return mv;
@@ -73,9 +72,7 @@ public class LoginController
 	@RequestMapping(path = "deleteFavorite.do", method = RequestMethod.POST)
 	public ModelAndView deleteFav(@RequestParam("deleteid") int id, @ModelAttribute("user") User user, @ModelAttribute("admin") Boolean admin)
 	{
-		System.out.println("deleteid" + id);
 		SuperPersons sp = superDao.getById(id);
-		System.out.println(sp.getName());
 		loginDao.deleteFavorite(sp, user);
 		user = loginDao.refreshUser(user);
 		ModelAndView mv = profile(user, admin);

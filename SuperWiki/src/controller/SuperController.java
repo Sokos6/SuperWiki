@@ -36,10 +36,6 @@ public class SuperController
 	public ModelAndView getByName(@RequestParam("text") String text)
 	{
 		List<SuperPersons> SP = superDao.getByName(text);
-		for (SuperPersons sp : SP)
-		{
-			System.out.println(sp.getName());
-		}
 		ModelAndView mv = new ModelAndView();
 		mv.setViewName("resultList.jsp");
 		mv.addObject("result", SP);

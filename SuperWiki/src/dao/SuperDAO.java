@@ -39,7 +39,18 @@ public class SuperDAO {
 	}
 	public void addSuperPerson(SuperPersons sp)
 	{
-		em.persist(sp);
+		List<SuperPersons> characters = em.createQuery("select s from SuperPersons s", SuperPersons.class).getResultList();
+		boolean match = true;
+		for (SuperPersons superperson : characters)
+		{
+			if (superperson.getName().equals(sp.getName()))
+			{
+				match = false;
+				break;
+			}
+		}
+		if (match)
+			em.persist(sp);
 	}
 	public void updateCharacter(SuperPersons sp)
 	{
