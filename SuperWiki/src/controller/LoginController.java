@@ -31,6 +31,8 @@ public class LoginController
 	public User createUser()
 	{
 		user = new User();
+		user.setUsername("guest");
+		user.setPassword("guest");
 		return user;
 	}
 	@ModelAttribute("admin")
@@ -60,9 +62,9 @@ public class LoginController
 			return mv;
 		}
 		catch (Exception e)
-		{			
+		{	
+			user = loginDao.getUser("guest", "guest");			
 			ModelAndView mv = new ModelAndView();
-			user.setUsername("");
 			mv.setViewName("error.jsp");
 			mv.addObject("user", user);
 			mv.addObject("admin", admin);
@@ -78,6 +80,7 @@ public class LoginController
 	@RequestMapping(path = "addFav.do", method = RequestMethod.POST)
 	public ModelAndView addFav(@RequestParam("selectionid") int id, @ModelAttribute("user") User user, @ModelAttribute("admin") Boolean admin)
 	{
+		System.out.println(user.getUsername() + " " + user.getPassword());
 		SuperPersons sp = superDao.getById(id);
 		loginDao.addFavorites(sp, user);
 		user = loginDao.refreshUser(user);
