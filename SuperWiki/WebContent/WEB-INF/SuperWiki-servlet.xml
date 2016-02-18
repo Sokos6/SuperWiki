@@ -13,6 +13,7 @@
 	<context:component-scan base-package="controller" />
 	<bean id="dao" class="dao.SuperDAO" />
 	<bean id="logindao" class="dao.LoginDAO" />
+	<bean id="commentdao" class="dao.CommentDAO" />
 	<bean id="myEntityManagerFactory"
 		class="org.springframework.orm.jpa.LocalContainerEntityManagerFactoryBean">
 		<property name="persistenceUnitName" value="MyPU"></property>
