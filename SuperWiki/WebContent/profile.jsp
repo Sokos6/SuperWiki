@@ -3,8 +3,8 @@
 <!DOCTYPE html>
 <html>
 <head>
-<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
-<title>Profile</title>
+<jsp:include page="_head.jsp"></jsp:include>
+<title>Profile | SuperWiki</title>
 </head>
 <body>
 	<p>Logged in as: ${user.username}</p>
@@ -34,5 +34,6 @@
 		</table>
 	</c:if>
 	<a href="index.jsp">HOME</a>
+<jsp:include page="_footer.jsp"></jsp:include>
 </body>
 </html>

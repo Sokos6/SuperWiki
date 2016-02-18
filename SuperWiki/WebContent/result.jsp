@@ -3,10 +3,11 @@
 <!DOCTYPE html>
 <html>
 <head>
-<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+<jsp:include page="_head.jsp"></jsp:include>
 <title>${result.name}</title>
 </head>
 <body>
+<jsp:include page="_nav.jsp"></jsp:include>
 	<p>Logged in as: ${user.username}</p>
 	<p>${result.name}</p>
 	<p>${result.alias}</p>
@@ -63,5 +64,6 @@
 		<input type="submit" value="favorite" /> <input type="hidden"
 			name="selectionid" value="${result.id}" />
 	</form>
+<jsp:include page="_footer.jsp"></jsp:include>
 </body>
 </html>

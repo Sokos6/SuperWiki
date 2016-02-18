@@ -3,10 +3,11 @@
 <!DOCTYPE html>
 <html>
 <head>
-<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
-<title>Character Results</title>
+<jsp:include page="_head.jsp"></jsp:include>
+<title>Character Results | SuperWiki</title>
 </head>
 <body>
+<jsp:include page="_nav.jsp"></jsp:include>
 	<p>Logged in as: ${user.username}</p>
 	<table>
 	<c:forEach var="results" items="${result}">
@@ -16,5 +17,6 @@
 		</tr>
 	</c:forEach>
 	</table>
+<jsp:include page="_footer.jsp"></jsp:include>
 </body>
 </html>
