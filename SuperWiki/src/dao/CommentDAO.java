@@ -27,4 +27,9 @@ public class CommentDAO {
 	public Comment getComment(int id){
 		return em.find(Comment.class, id);
 	}
+	public void updateComment(Comment comment, String message){
+		comment = em.merge(comment);
+		comment.setMessage(message);
+		em.persist(comment);
+	}
 }

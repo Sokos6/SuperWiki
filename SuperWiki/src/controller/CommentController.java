@@ -55,4 +55,32 @@ public class CommentController {
 		mv.addObject("admin", admin);
 		return mv;
 	}
+	@RequestMapping(path="updateComment.do", method=RequestMethod.GET)
+	public ModelAndView updateCommentForm(@RequestParam("commentid") int commentId, @RequestParam("superPersonID") int superPersonId){
+		SuperPersons sp = superDao.getById(superPersonId);
+		Comment comment = commentDao.getComment(commentId);
+		
+		ModelAndView mv = new ModelAndView();
+		mv.setViewName("updateComment.jsp");
+		mv.addObject("result", sp);
+		mv.addObject("comment",comment);
+		
+		return mv;
+	}
+	
+	@RequestMapping(path="updateComment.do", method=RequestMethod.POST)
+	public ModelAndView updateComment(@RequestParam("commentid") int commentId, @RequestParam("superPersonID") int superPersonId, @RequestParam("message") String message, @ModelAttribute("user") User user, @ModelAttribute("admin") Boolean admin){
+		SuperPersons sp = superDao.getById(superPersonId);
+		Comment comment = commentDao.getComment(commentId);
+		commentDao.updateComment(comment, message);
+		sp = superDao.refreshSuperPersons(sp);
+		user = loginDao.refreshUser(user);
+	
+		ModelAndView mv = new ModelAndView();
+		mv.setViewName("result.jsp");
+		mv.addObject("result", sp);
+		mv.addObject("user", user);
+		mv.addObject("admin", admin);
+		return mv;
+	}
 }

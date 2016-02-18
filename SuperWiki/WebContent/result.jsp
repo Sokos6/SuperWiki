@@ -31,7 +31,11 @@
 										type="hidden" name="superPersonID" value="${result.id }" /><input
 										type="submit" value="Delete">
 								</form></td>
-								<td></td>
+								<td><form action="updateComment.do" method="GET">
+									<input type="hidden" name="commentid" value="${comment.id }"><input
+										type="hidden" name="superPersonID" value="${result.id }" /><input
+										type="submit" value="Update">
+								</form></td>
 						</c:when>
 						<c:when test="${user.id == comment.user.id }">
 							<td><form action="deleteComment.do" method="POST">
@@ -39,12 +43,17 @@
 									<input type="hidden" name="superPersonID" value="${result.id }" />
 									<input type="submit" value="Delete">
 								</form></td>
+								<td><form action="updateComment.do" method="GET">
+									<input type="hidden" name="commentid" value="${comment.id }"><input
+										type="hidden" name="superPersonID" value="${result.id }" /><input
+										type="submit" value="Update">
+								</form></td>
 						</c:when>
 					</c:choose>
 				</tr>
 			</c:forEach>
 		</table>
-	</c:if>
+	</c:if >
 	<form action="addComment.do" method="POST">
 		<input type="hidden" name="superPersonID" value="${result.id }" />
 		Comment:
