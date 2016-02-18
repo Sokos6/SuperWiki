@@ -68,6 +68,22 @@ public class LoginController
 		ModelAndView mv = profile(user, admin );
 		return mv;
 	}
+	
+	@RequestMapping(path = "addUser.do", method = RequestMethod.GET)
+	public String showAddUser()
+	{
+		return "addUser.jsp";
+	}
+	
+	@RequestMapping(path = "addUser.do", method = RequestMethod.POST)
+	public ModelAndView addUser(User user)
+	{
+		loginDao.addUser(user);
+		ModelAndView mv = new ModelAndView();
+		mv.setViewName("login.jsp");
+		return mv;
+	}
+	
 
 	@RequestMapping(path = "deleteFavorite.do", method = RequestMethod.POST)
 	public ModelAndView deleteFav(@RequestParam("deleteid") int id, @ModelAttribute("user") User user, @ModelAttribute("admin") Boolean admin)
