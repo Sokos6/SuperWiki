@@ -18,7 +18,7 @@ public class Favorite {
 	@ManyToOne
 	@JoinColumn(name="superpersons_id")
 	private SuperPersons superPerson;
-	@ManyToOne(cascade = CascadeType.PERSIST)
+	@ManyToOne
 	@JoinColumn(name="user_id")
 	private User user;
 	
