@@ -1,5 +1,6 @@
 package controller;
 
+import java.util.Collections;
 import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -58,6 +59,15 @@ public class SuperController
 		ModelAndView mv = new ModelAndView();
 		mv.setViewName("resultList.jsp");
 		mv.addObject("result", villains);
+		return mv;
+	}
+	@RequestMapping(path = "allCharacters.do")
+	public ModelAndView getAllCharacters()
+	{
+		List<SuperPersons> characters = superDao.getAllCharacters();
+		ModelAndView mv = new ModelAndView();
+		mv.setViewName("resultList.jsp");
+		mv.addObject("result", characters);
 		return mv;
 	}
 

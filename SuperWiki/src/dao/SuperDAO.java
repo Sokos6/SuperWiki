@@ -30,6 +30,10 @@ public class SuperDAO {
 	{
 		return em.createNamedQuery("SuperPersons.getAllSuperHeros", SuperPersons.class).setParameter("supertype", SuperType.villain).getResultList();
 	}
+	public List<SuperPersons> getAllCharacters()
+	{
+		return em.createQuery("select s from SuperPersons s", SuperPersons.class).getResultList();
+	}
 	public void addSuperPerson(SuperPersons sp)
 	{
 		em.persist(sp);
