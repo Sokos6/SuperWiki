@@ -1,10 +1,13 @@
+<%@ page language="java" contentType="text/html; charset=UTF-8"
+    pageEncoding="UTF-8"%>
 <!DOCTYPE html>
 <html>
 <head>
-<meta charset="UTF-8">
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
 <title>Home</title>
 </head>
 <body>
+	<p>Logged in as: ${user.username}</p>
 	<form action = "select.do">
 		<input type = "text" name = "text" placeholder = "search by name"/>
 		<input type = "submit" value = "Submit"/>

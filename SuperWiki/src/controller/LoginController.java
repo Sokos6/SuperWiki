@@ -53,7 +53,7 @@ public class LoginController
 		admin = user.isAdmin();
 		System.out.println(user.getId());
 		ModelAndView mv = new ModelAndView();
-		mv.setViewName("index.html");
+		mv.setViewName("index.jsp");
 		mv.addObject("user", user);
 		mv.addObject("admin", admin);
 		return mv;
