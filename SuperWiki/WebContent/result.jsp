@@ -28,8 +28,8 @@
 	</table>
 	</c:if>
 	<form action="addComment.do" method="POST">
-	<input type="hidden" name="superPerson" value="${result }"/>
-		Comment:<textarea cols="100" rows="5"></textarea>
+	<input type="hidden" name="superPersonID" value="${result.id }"/>
+		Comment:<textarea cols="100" rows="5" name="message"></textarea>
 		<input type="submit" value="Post"/>
 	</form>
 	<form action = "addFav.do" method = "POST">

@@ -50,4 +50,9 @@ public class SuperDAO {
 		sperson.setSuperType(sp.getSuperType());
 		em.persist(sperson);
 	}
+	public SuperPersons refreshSuperPersons(SuperPersons sp){
+		sp = em.merge(sp);
+		em.refresh(sp);
+		return sp;
+	}
 }

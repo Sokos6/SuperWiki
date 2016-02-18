@@ -106,9 +106,4 @@ public class LoginController
 //		mv.addObject("user", user);
 		return mv;
 	}
-	@RequestMapping(path = "addComment.do", method = RequestMethod.POST)
-	public ModelAndView addComment(Comment comment)
-	{
-		return null;
-	}
 }

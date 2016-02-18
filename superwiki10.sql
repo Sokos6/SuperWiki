@@ -26,14 +26,14 @@ CREATE TABLE `comment` (
   `id` int(11) NOT NULL AUTO_INCREMENT,
   `user_id` int(11) NOT NULL,
   `message` varchar(8000) DEFAULT NULL,
-  `created` datetime NOT NULL,
+  `created` timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP,
   `superpersons_id` int(11) NOT NULL,
   PRIMARY KEY (`id`,`user_id`),
   KEY `id_idx` (`user_id`),
   KEY `fk_comment_superpersons1_idx` (`superpersons_id`),
-  CONSTRAINT `id` FOREIGN KEY (`user_id`) REFERENCES `user` (`id`) ON DELETE CASCADE ON UPDATE CASCADE,
-  CONSTRAINT `fk_comment_superpersons1` FOREIGN KEY (`superpersons_id`) REFERENCES `superpersons` (`id`) ON DELETE NO ACTION ON UPDATE NO ACTION
-) ENGINE=InnoDB AUTO_INCREMENT=2 DEFAULT CHARSET=latin1;
+  CONSTRAINT `fk_comment_superpersons1` FOREIGN KEY (`superpersons_id`) REFERENCES `superpersons` (`id`) ON DELETE NO ACTION ON UPDATE NO ACTION,
+  CONSTRAINT `id` FOREIGN KEY (`user_id`) REFERENCES `user` (`id`) ON DELETE CASCADE ON UPDATE CASCADE
+) ENGINE=InnoDB AUTO_INCREMENT=11 DEFAULT CHARSET=latin1;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -42,7 +42,7 @@ CREATE TABLE `comment` (
 
 LOCK TABLES `comment` WRITE;
 /*!40000 ALTER TABLE `comment` DISABLE KEYS */;
-INSERT INTO `comment` VALUES (1,1,'tony stark is played by rdj','2016-02-16 00:00:00',1);
+INSERT INTO `comment` VALUES (1,1,'tony stark is played by rdj','2016-02-16 07:00:00',1),(2,2,'lorem dolor epsem','0000-00-00 00:00:00',1),(3,2,'test, test','0000-00-00 00:00:00',1),(4,2,'test, test','2016-02-18 17:01:26',1),(5,1,'This is just a test. This is only a test','2016-02-18 17:03:21',1),(6,1,'what is up','2016-02-18 17:04:51',2),(7,1,'what is up','2016-02-18 17:04:59',2),(8,1,'need to write something','2016-02-18 17:05:18',2),(9,1,'writing to the database','2016-02-18 17:07:49',2),(10,2,'making sure it works','2016-02-18 17:08:35',5);
 /*!40000 ALTER TABLE `comment` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -121,7 +121,7 @@ CREATE TABLE `superpersons` (
   PRIMARY KEY (`id`),
   KEY `fk_Superhero_Team_idx` (`Team_id`),
   CONSTRAINT `alias_name` FOREIGN KEY (`Team_id`) REFERENCES `teams` (`id`) ON DELETE NO ACTION ON UPDATE NO ACTION
-) ENGINE=InnoDB AUTO_INCREMENT=17 DEFAULT CHARSET=latin1;
+) ENGINE=InnoDB AUTO_INCREMENT=13 DEFAULT CHARSET=latin1;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -130,7 +130,7 @@ CREATE TABLE `superpersons` (
 
 LOCK TABLES `superpersons` WRITE;
 /*!40000 ALTER TABLE `superpersons` DISABLE KEYS */;
-INSERT INTO `superpersons` VALUES (1,'Iron Man','Tony Stark','1963','Stan Lee',1,'','Marvel Comics','superhero'),(2,'Captain America','Steve Rogers','1941','Stan Lee',1,'','Marvel Comics','superhero'),(3,'The Incredible Hulk','Bruce Banner','1962','Stan Lee',1,'','Marvel Comics','superhero'),(4,'Thor',NULL,'1951','Stan Lee',1,'','Marvel Comics','superhero'),(5,'Black Widow','Natasha Romanoff','1964','Stan Lee',1,'','Marvel Comics','superhero'),(6,'Hawkeye','Clint Barton','1964','Stan Lee',1,'','Marvel Comics','superhero'),(7,'Doctor Doom','Victor Von Doom','1962','Jack Kirby',NULL,NULL,'Marvel Comics','villain'),(8,'Venom','Eddie Brock','1988','Todd McFarlane',NULL,NULL,'Marvel Comics','villain'),(9,'Magneto','Max Eisenhaurdt','1963','Stan Lee, Jack Kirby',NULL,NULL,'Marvel Comics','villain'),(10,'Galactus','Galan','1966','Stan Lee, Jack Kirby',NULL,NULL,'Marvel Comics','villain'),(11,'Carnage','Cletus Kasady','1992','Mark Bagley',NULL,NULL,'Marvel Comics','villain'),(12,'Wolverine','Logan','The Incredible Hulk #180','stan lee',NULL,'','Marvel Comics','superhero'),(13,'Batman','Bruce Wayne','Detective Comics #27','Bob Kane, Bill Finger',NULL,NULL,'DC Comics','superhero'),(14,'Superman','Clark Kent','Action Comcis #1','Jerry Siegel, Joe Shuster',NULL,NULL,'DC Comics','superhero'),(15,'Spider-Man','Peter Park','Amazing Fantasy #15','Stan Lee, Steve Ditko',NULL,NULL,'Marvel Comics','superhero'),(16,'The Joker',NULL,'debut issue of Batman','Bill Finger, Bob Kane, and Jerry Robinson',NULL,NULL,'DC Comics','villain');
+INSERT INTO `superpersons` VALUES (1,'Iron Man','Tony Stark','1963','Stan Lee',1,' fslkjsl','marvel','superhero'),(2,'Captain America','Steve Rogers','1941','Stan Lee',1,'','','superhero'),(3,'Hulk','Bruce Banner','1962','Stan Lee',1,'','','superhero'),(4,'Thor',NULL,'1951','Stan Lee',1,'','','superhero'),(5,'Black Widow','Natasha Romanoff','1964','Stan Lee',1,'','','superhero'),(6,'Hawkeye','Clint Barton','1964','Stan Lee',1,'','','superhero'),(7,'Doctor Doom','Victor Von Doom','1962','Jack Kirby',NULL,NULL,NULL,'villain'),(8,'Venom','Eddie Brock','1988','Todd McFarlane',NULL,NULL,NULL,'villain'),(9,'Magneto','Max Eisenhaurdt','1963','Stan Lee, Jack Kirby',NULL,NULL,NULL,'villain'),(10,'Galactus','Galan','1966','Stan Lee, Jack Kirby',NULL,NULL,NULL,'villain'),(11,'Carnage','Cletus Kasady','1992','Mark Bagley',NULL,NULL,NULL,'villain'),(12,'wolverine','logan','hulk','stan lee',NULL,'hello','top cow','superhero');
 /*!40000 ALTER TABLE `superpersons` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -175,7 +175,7 @@ CREATE TABLE `teams` (
   `id` int(11) NOT NULL AUTO_INCREMENT,
   `name` varchar(45) NOT NULL,
   PRIMARY KEY (`id`)
-) ENGINE=InnoDB AUTO_INCREMENT=4 DEFAULT CHARSET=latin1;
+) ENGINE=InnoDB AUTO_INCREMENT=2 DEFAULT CHARSET=latin1;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -184,7 +184,7 @@ CREATE TABLE `teams` (
 
 LOCK TABLES `teams` WRITE;
 /*!40000 ALTER TABLE `teams` DISABLE KEYS */;
-INSERT INTO `teams` VALUES (1,'Avengers'),(2,'X-Men'),(3,'Justice League');
+INSERT INTO `teams` VALUES (1,'Avengers');
 /*!40000 ALTER TABLE `teams` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -205,7 +205,7 @@ CREATE TABLE `user` (
   PRIMARY KEY (`id`),
   UNIQUE KEY `username_UNIQUE` (`username`),
   KEY `fk_user_superpersons1_idx` (`superpersons_id`)
-) ENGINE=InnoDB AUTO_INCREMENT=16 DEFAULT CHARSET=latin1;
+) ENGINE=InnoDB AUTO_INCREMENT=12 DEFAULT CHARSET=latin1;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -214,7 +214,7 @@ CREATE TABLE `user` (
 
 LOCK TABLES `user` WRITE;
 /*!40000 ALTER TABLE `user` DISABLE KEYS */;
-INSERT INTO `user` VALUES (1,'admin',NULL,'admin',NULL,NULL),(2,'guest',NULL,'guest',NULL,NULL),(3,'gorilla',NULL,'banana','2016-02-18 04:56:53',NULL),(4,'batman',NULL,'batmobile','2016-02-18 04:57:41',NULL),(5,'falcon',NULL,'punch','2016-02-18 04:58:21',NULL),(6,'mr',NULL,'sir','2016-02-18 04:58:37',NULL),(7,'chris',NULL,'bergstrom','2016-02-18 04:59:26',NULL),(8,'will',NULL,'sokolowski','2016-02-18 04:59:42',NULL),(9,'shelby',NULL,'escobedo','2016-02-18 05:00:02',NULL),(10,'han',NULL,'solo','2016-02-18 05:00:21',NULL),(11,'kylo',NULL,'ren','2016-02-18 05:00:31',NULL),(12,'wolverine',NULL,'claws','2016-02-18 04:54:13',NULL),(13,'jamie',NULL,'romero','2016-02-18 04:55:25',NULL),(14,'finding',NULL,'nemo','2016-02-18 04:55:43',NULL),(15,'darth',NULL,'vader','2016-02-18 05:00:48',NULL);
+INSERT INTO `user` VALUES (1,'admin',NULL,'admin',NULL,NULL),(2,'guest',NULL,'guest',NULL,NULL);
 /*!40000 ALTER TABLE `user` ENABLE KEYS */;
 UNLOCK TABLES;
 /*!40103 SET TIME_ZONE=@OLD_TIME_ZONE */;
@@ -227,4 +227,4 @@ UNLOCK TABLES;
 /*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
 /*!40111 SET SQL_NOTES=@OLD_SQL_NOTES */;
 
--- Dump completed on 2016-02-17 22:28:20
+-- Dump completed on 2016-02-18 10:09:20

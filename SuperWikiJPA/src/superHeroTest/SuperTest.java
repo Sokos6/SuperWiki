@@ -15,11 +15,12 @@ public class SuperTest {
 		System.out.println("before query");
 //		SuperTeam st = em.find(SuperTeam.class, 1);
 		User user = em.find(User.class, 1);
-		SuperPersons superPerson = em.find(SuperPersons.class, 1);
-		Favorite fav = new Favorite(user, superPerson);
-		System.out.println(em.contains(fav));
-		em.persist(fav);
-		System.out.println(em.contains(fav));
+		SuperPersons sp = em.find(SuperPersons.class, 1);
+		String message = "This is just a test. This is only a test";
+		Comment comment = new Comment(sp, message, user);
+		
+		em.persist(comment);
+		
 		em.getTransaction().commit();
 		em.close();
 		emf.close();

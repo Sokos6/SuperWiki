@@ -1,0 +1,41 @@
+package controller;
+
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Controller;
+import org.springframework.web.bind.annotation.ModelAttribute;
+import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestMethod;
+import org.springframework.web.bind.annotation.RequestParam;
+import org.springframework.web.bind.annotation.SessionAttributes;
+import org.springframework.web.servlet.ModelAndView;
+
+import dao.CommentDAO;
+import dao.LoginDAO;
+import dao.SuperDAO;
+import superHeroTest.SuperPersons;
+import superHeroTest.User;
+@Controller
+@SessionAttributes({"user", "admin"})
+public class CommentController {
+	@Autowired
+	private LoginDAO loginDao;
+	@Autowired
+	private SuperDAO superDao;
+	@Autowired
+	private CommentDAO commentDao;
+	@RequestMapping(path = "addComment.do", method = RequestMethod.POST)
+	public ModelAndView addComment(@RequestParam("superPersonID") int spersonId, @RequestParam("message") String message, @ModelAttribute("user") User user, @ModelAttribute("admin") Boolean admin)
+	{
+		SuperPersons sp = superDao.getById(spersonId);
+		
+		commentDao.addComment(sp, message, user);
+		user = loginDao.refreshUser(user);
+		sp = superDao.refreshSuperPersons(sp);
+		ModelAndView mv = new ModelAndView();
+		mv.setViewName("result.jsp");
+		mv.addObject("result", sp);
+		mv.addObject("user", user);
+		mv.addObject("admin", admin);
+		return mv;
+	}
+}
