@@ -31,6 +31,7 @@ public class LoginController
 	public User createUser()
 	{
 		user = new User();
+		user.setId(2);
 		user.setUsername("guest");
 		user.setPassword("guest");
 		return user;
@@ -63,6 +64,7 @@ public class LoginController
 		}
 		catch (Exception e)
 		{	
+			
 			user = loginDao.getUser("guest", "guest");			
 			ModelAndView mv = new ModelAndView();
 			mv.setViewName("error.jsp");
@@ -74,18 +76,34 @@ public class LoginController
 	@RequestMapping(path = "logout.do", method = RequestMethod.GET)
 	public String logout()
 	{
+		user.setId(2);
+		user.setUsername("guest");
+		user.setPassword("guest");
 		return "index.html";
 	}
 
 	@RequestMapping(path = "addFav.do", method = RequestMethod.POST)
 	public ModelAndView addFav(@RequestParam("selectionid") int id, @ModelAttribute("user") User user, @ModelAttribute("admin") Boolean admin)
 	{
-		System.out.println(user.getUsername() + " " + user.getPassword());
 		SuperPersons sp = superDao.getById(id);
-		loginDao.addFavorites(sp, user);
-		user = loginDao.refreshUser(user);
-		ModelAndView mv = profile(user, admin );
-		return mv;
+		try
+		{			
+			loginDao.addFavorites(sp, user);
+			user = loginDao.refreshUser(user);
+			ModelAndView mv = profile(user, admin );
+			return mv;
+		}
+		catch(Exception e)
+		{			
+			user.setId(2);
+			user.setUsername("guest");
+			user.setPassword("guest");
+			loginDao.addFavorites(sp, user);
+			user = loginDao.refreshUser(user);
+			ModelAndView mv = profile(user, admin );
+			return mv;
+		}
+//		System.out.println(user.getUsername() + " " + user.getPassword());
 	}
 	
 	@RequestMapping(path = "addUser.do", method = RequestMethod.GET)
