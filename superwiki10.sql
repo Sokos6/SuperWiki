@@ -26,7 +26,7 @@ CREATE TABLE `comment` (
   `id` int(11) NOT NULL AUTO_INCREMENT,
   `user_id` int(11) NOT NULL,
   `message` varchar(8000) DEFAULT NULL,
-  `created` datetime NOT NULL,
+  `created` timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP,
   `superpersons_id` int(11) NOT NULL,
   PRIMARY KEY (`id`,`user_id`),
   KEY `id_idx` (`user_id`),
