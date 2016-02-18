@@ -49,14 +49,25 @@ public class LoginController
 	public ModelAndView homePage(@RequestParam("username") String username, @RequestParam("password") String password, @ModelAttribute("user") User user, @ModelAttribute("admin") Boolean admin)
 	{
 		System.out.println(username + " " + password);
-		user = loginDao.getUser(username, password);
-		admin = user.isAdmin();
-		System.out.println(user.getId());
-		ModelAndView mv = new ModelAndView();
-		mv.setViewName("index.jsp");
-		mv.addObject("user", user);
-		mv.addObject("admin", admin);
-		return mv;
+		try
+		{
+			user = loginDao.getUser(username, password);			
+			admin = user.isAdmin();
+			ModelAndView mv = new ModelAndView();
+			mv.setViewName("index.jsp");
+			mv.addObject("user", user);
+			mv.addObject("admin", admin);
+			return mv;
+		}
+		catch (Exception e)
+		{			
+			ModelAndView mv = new ModelAndView();
+			user.setUsername("");
+			mv.setViewName("error.jsp");
+			mv.addObject("user", user);
+			mv.addObject("admin", admin);
+			return mv;
+		}
 	}
 	@RequestMapping(path = "logout.do", method = RequestMethod.GET)
 	public String logout()
