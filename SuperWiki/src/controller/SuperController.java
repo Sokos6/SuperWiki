@@ -35,9 +35,9 @@ public class SuperController
 	@RequestMapping(path = "select.do", params = "text")
 	public ModelAndView getByName(@RequestParam("text") String text)
 	{
-		SuperPersons SP = superDao.getByName(text);
+		List<SuperPersons> SP = superDao.getByName(text);
 		ModelAndView mv = new ModelAndView();
-		mv.setViewName("result.jsp");
+		mv.setViewName("resultList.jsp");
 		mv.addObject("result", SP);
 		return mv;
 	}
