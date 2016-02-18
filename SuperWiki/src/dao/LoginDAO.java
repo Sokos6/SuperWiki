@@ -60,6 +60,8 @@ public class LoginDAO {
 	{
 		String query = "SELECT f from Favorite f where f.superPerson.id = " + sp.getId() + " AND f.user.id= "
 				+ user.getId() + "";
+		System.out.println("before create query");
+		System.out.println(query);
 		Favorite fav = em.createQuery(query, Favorite.class).getSingleResult();
 		user.removeFavorites(fav);
 		em.remove(fav);
@@ -88,10 +90,7 @@ public class LoginDAO {
 	{
 		user = refreshUser(user);
 		user.getFavorites().clear();
-<<<<<<< HEAD
-=======
 		//user = refreshUser(user);
->>>>>>> 617daaca08629e966573c7c27e4c57f25709cc8b
 		em.remove(user);
 	}
 
