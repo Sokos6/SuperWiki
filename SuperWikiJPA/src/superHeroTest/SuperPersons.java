@@ -8,6 +8,7 @@ import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.EnumType;
 import javax.persistence.Enumerated;
+import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
@@ -46,7 +47,7 @@ public class SuperPersons {
 	@ManyToMany
 	@JoinTable(name = "nemesis", joinColumns = @JoinColumn(name = "superperson_id") , inverseJoinColumns = @JoinColumn(name = "nemesis_id") )
 	private List<SuperPersons> nemesis = new ArrayList<SuperPersons>();
-	@OneToMany(mappedBy = "superPerson")
+	@OneToMany(mappedBy = "superPerson", fetch=FetchType.EAGER)
 	private List<Comment> comments = new ArrayList<Comment>();
 	@OneToMany(mappedBy="superPerson")
 	private List<Favorite> userfavorites;

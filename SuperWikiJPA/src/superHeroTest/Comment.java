@@ -27,6 +27,16 @@ public class Comment
 	@JoinColumn(name="superpersons_id")
 	private SuperPersons superPerson;
 	
+	public Comment(){
+		
+	}
+	
+	public Comment(SuperPersons sp, String message, User user){
+		this.superPerson = sp;
+		this.message = message;
+		this.user = user;
+	}
+	
 	public SuperPersons getSuperPerson()
 	{
 		return superPerson;
