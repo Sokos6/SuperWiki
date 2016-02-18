@@ -14,12 +14,10 @@ public class SuperTest {
 		 em.getTransaction().begin();
 		System.out.println("before query");
 //		SuperTeam st = em.find(SuperTeam.class, 1);
-		User user = em.find(User.class, 1);
-		SuperPersons sp = em.find(SuperPersons.class, 1);
-		String message = "This is just a test. This is only a test";
-		Comment comment = new Comment(sp, message, user);
-		
+		Comment comment = em.find(Comment.class, 8);
+		comment.setMessage("changing a message");
 		em.persist(comment);
+		System.out.println(em.contains(comment));
 		
 		em.getTransaction().commit();
 		em.close();

@@ -28,7 +28,7 @@ CREATE TABLE `comment` (
   `message` varchar(8000) DEFAULT NULL,
   `created` timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP,
   `superpersons_id` int(11) NOT NULL,
-  PRIMARY KEY (`id`,`user_id`),
+  PRIMARY KEY (`id`),
   KEY `id_idx` (`user_id`),
   KEY `fk_comment_superpersons1_idx` (`superpersons_id`),
   CONSTRAINT `fk_comment_superpersons1` FOREIGN KEY (`superpersons_id`) REFERENCES `superpersons` (`id`) ON DELETE NO ACTION ON UPDATE NO ACTION,

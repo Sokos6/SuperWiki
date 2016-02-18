@@ -17,4 +17,14 @@ public class CommentDAO {
 		Comment comment = new Comment(sp, message, user);
 		em.persist(comment);
 	}
+
+	public void deleteComment(Comment comment)
+	{
+		System.out.println("in delete comment");
+		comment = em.merge(comment);
+		em.remove(comment);
+	}
+	public Comment getComment(int id){
+		return em.find(Comment.class, id);
+	}
 }
