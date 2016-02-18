@@ -22,7 +22,7 @@ import javax.persistence.Table;
 
 @Entity
 @Table(name = "superpersons")
-@NamedQueries({ @NamedQuery(name = "SuperPersons.getName", query = "select s FROM SuperPersons s WHERE s.name = :name"),
+@NamedQueries({ @NamedQuery(name = "SuperPersons.getName", query = "select s FROM SuperPersons s WHERE s.name like :name"),
 		@NamedQuery(name = "SuperPersons.getAllSuperHeros", query = "select s from SuperPersons s WHERE s.superType = :supertype") })
 
 public class SuperPersons {

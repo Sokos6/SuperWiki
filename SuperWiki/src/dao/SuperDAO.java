@@ -16,9 +16,12 @@ public class SuperDAO {
 	@PersistenceContext
 	private EntityManager em;
 	
-	public SuperPersons getByName(String name) {
-		return em.createNamedQuery("SuperPersons.getName",SuperPersons.class).setParameter("name", name).getSingleResult();
+	public List<SuperPersons> getByName(String name) {
+		return em.createNamedQuery("SuperPersons.getName", SuperPersons.class).setParameter("name", "%" + name + "%").getResultList();
 	}
+//	public SuperPersons getByName(String name) {
+//		return em.createNamedQuery("SuperPersons.getName",SuperPersons.class).setParameter("name", "%" + name + "%").getSingleResult();
+//	}
 	public SuperPersons getById(int Id) {
 		return em.find(SuperPersons.class, Id); 
 	}
