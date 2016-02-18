@@ -118,6 +118,7 @@ CREATE TABLE `superpersons` (
   `origin` varchar(42000) DEFAULT NULL,
   `publisher` varchar(100) DEFAULT NULL,
   `supertype` varchar(45) NOT NULL,
+  `image` varchar(8000) DEFAULT NULL,
   PRIMARY KEY (`id`),
   KEY `fk_Superhero_Team_idx` (`Team_id`),
   CONSTRAINT `alias_name` FOREIGN KEY (`Team_id`) REFERENCES `teams` (`id`) ON DELETE NO ACTION ON UPDATE NO ACTION
