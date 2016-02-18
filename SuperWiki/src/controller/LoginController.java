@@ -36,7 +36,6 @@ public class LoginController
 	@ModelAttribute("admin")
 	public Boolean createAdmin()
 	{
-		user = new User();
 		return false;
 	}
 
@@ -61,28 +60,25 @@ public class LoginController
 	}
 
 	@RequestMapping(path = "addFav.do", method = RequestMethod.POST)
-	public ModelAndView addFav(@RequestParam("selectionid") int id, @ModelAttribute("user") User user)
+	public ModelAndView addFav(@RequestParam("selectionid") int id, @ModelAttribute("user") User user, @ModelAttribute("admin") Boolean admin)
 	{
 		SuperPersons sp = superDao.getById(id);
 		loginDao.addFavorites(sp, user);
+		System.out.println("back in controller");
 		user = loginDao.refreshUser(user);
-		ModelAndView mv = new ModelAndView();
-		mv.setViewName("profile.jsp");
-		mv.addObject("user", user);
+		ModelAndView mv = profile(user, admin );
 		return mv;
 	}
 
 	@RequestMapping(path = "deleteFavorite.do", method = RequestMethod.POST)
-	public ModelAndView deleteFav(@RequestParam("deleteid") int id, @ModelAttribute("user") User user)
+	public ModelAndView deleteFav(@RequestParam("deleteid") int id, @ModelAttribute("user") User user, @ModelAttribute("admin") Boolean admin)
 	{
 		System.out.println("deleteid" + id);
 		SuperPersons sp = superDao.getById(id);
 		System.out.println(sp.getName());
 		loginDao.deleteFavorite(sp, user);
 		user = loginDao.refreshUser(user);
-		ModelAndView mv = new ModelAndView();
-		mv.setViewName("profile.jsp");
-		mv.addObject("user", user);
+		ModelAndView mv = profile(user, admin);
 		return mv;
 	}
 

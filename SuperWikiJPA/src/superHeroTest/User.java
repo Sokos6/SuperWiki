@@ -16,6 +16,8 @@ import javax.persistence.NamedQuery;
 import javax.persistence.OneToMany;
 import javax.persistence.Table;
 
+import org.hibernate.annotations.CascadeType;
+
 @Entity
 @Table(name = "user")
 @NamedQuery(name = "User.getAllUsers", query = "select u from User u")
@@ -32,7 +34,7 @@ public class User
 	private Date timeStamp;
 	@OneToMany(mappedBy = "user")
 	private List<Comment> comments = new ArrayList<Comment>();
-	@OneToMany(mappedBy = "user", fetch = FetchType.EAGER)
+	@OneToMany( mappedBy = "user", fetch = FetchType.EAGER)
 	private Set<Favorite> favorites = new LinkedHashSet<Favorite>();
 
 	public int getId()

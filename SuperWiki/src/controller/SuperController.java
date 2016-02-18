@@ -15,7 +15,7 @@ import superHeroTest.SuperPersons;
 import superHeroTest.SuperType;
 
 @Controller
-@SessionAttributes("user")
+@SessionAttributes({"user", "admin"})
 public class SuperController
 {
 	@Autowired
