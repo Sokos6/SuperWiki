@@ -21,7 +21,7 @@
 		<br>
 			Publisher:<input type="text" name="publisher" />
 		<br>
-		<input type="radio" name="good" value="true">superhero
+		<input type="radio" name="good" value="true" checked = "checked">superhero
 		<input type="radio" name="good" value="false">villain
 		<input type = "submit" value = "Create"/>
 	</form>
