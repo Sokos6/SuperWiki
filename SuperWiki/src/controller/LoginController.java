@@ -58,29 +58,10 @@ public class LoginController
 		mv.addObject("admin", admin);
 		return mv;
 	}
-	
-//	@RequestMapping(path = "logout.do", method = RequestMethod.GET, params = { "username", "password" })
-//	public ModelAndView logout(@RequestParam("username") String username, @RequestParam("password") String password)
-//	{
-//		
-//		user = loginDao.getUser(username, password);
-//		admin = user.isAdmin();
-//		user.setUsername(username);
-//		ModelAndView mv = new ModelAndView();
-//		mv.setViewName("index.html");
-//		mv.addObject("user", user);
-//		mv.addObject("admin", admin);
-//		return mv;
-//	}
 	@RequestMapping(path = "logout.do", method = RequestMethod.GET)
 	public String logout()
 	{
 		return "index.html";
-//		ModelAndView mv = new ModelAndView();
-//		mv.setViewName("index.html");
-//		mv.addObject("user", user);
-//		mv.addObject("admin", admin);
-//		return mv;
 	}
 
 	@RequestMapping(path = "addFav.do", method = RequestMethod.POST)
