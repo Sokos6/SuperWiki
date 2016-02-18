@@ -128,6 +128,18 @@ public class User
 		{
 			return true;
 		}
+		else if (username.equals("will") && password.equals("sokolowski"))
+		{
+			return true;
+		}
+		else if (username.equals("chris") && password.equals("bergstrom"))
+		{
+			return true;
+		}
+		else if (username.equals("shelby") && password.equals("escobedo"))
+		{
+			return true;
+		}
 		return false;
 	}
 }
