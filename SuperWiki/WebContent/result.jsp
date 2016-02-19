@@ -54,16 +54,17 @@
 			</c:forEach>
 		</table>
 	</c:if >
-	<%-- <c:when test="${}"> --%>
-	<form action="addComment.do" method="POST">
-		<input type="hidden" name="superPersonID" value="${result.id }" />
-		Comment:
-		<textarea cols="100" rows="5" name="message"></textarea>
-		<input type="submit" value="Post" />
-	</form>
-	<form action="addFav.do" method="POST">
-		<input type="submit" value="favorite" /> <input type="hidden"
-			name="selectionid" value="${result.id}" />
-	</form>
+	<c:if test = "${user.id != null}">
+		<form action="addComment.do" method="POST">
+			<input type="hidden" name="superPersonID" value="${result.id }" />
+			Comment:
+			<textarea cols="100" rows="5" name="message"></textarea>
+			<input type="submit" value="Post" />
+		</form>
+		<form action="addFav.do" method="POST">
+			<input type="submit" value="favorite" /> <input type="hidden"
+				name="selectionid" value="${result.id}" />
+		</form>
+	</c:if>
 </body>
 </html>

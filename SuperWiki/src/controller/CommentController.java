@@ -24,6 +24,7 @@ public class CommentController {
 	private SuperDAO superDao;
 	@Autowired
 	private CommentDAO commentDao;
+	
 	@RequestMapping(path = "addComment.do", method = RequestMethod.POST)
 	public ModelAndView addComment(@RequestParam("superPersonID") int spersonId, @RequestParam("message") String message, @ModelAttribute("user") User user, @ModelAttribute("admin") Boolean admin)
 	{

@@ -19,6 +19,16 @@
 		</tr>
 	</c:forEach>
 	</table>
+	<p>Comments</p>
+	<table>
+	<c:forEach var="comment" items="${user.comments}">
+		<tr>
+			<td>${comment.message}</td>
+			<td>${comment.superPerson.name}</td>
+			<td><a href = "selectID.do?id=${comment.superPerson.id}">${comment.superPerson.name}</a> 
+		</tr>
+	</c:forEach>
+	</table>
 	<c:if test="${admin}">
 		<p>Users</p>
 		<table>

@@ -42,7 +42,6 @@ CREATE TABLE `comment` (
 
 LOCK TABLES `comment` WRITE;
 /*!40000 ALTER TABLE `comment` DISABLE KEYS */;
-INSERT INTO `comment` VALUES (1,1,'tony stark is played by rdj','2016-02-16 00:00:00',1);
 /*!40000 ALTER TABLE `comment` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -228,4 +227,4 @@ UNLOCK TABLES;
 /*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
 /*!40111 SET SQL_NOTES=@OLD_SQL_NOTES */;
 
--- Dump completed on 2016-02-18 16:46:39
+-- Dump completed on 2016-02-18 18:51:03
