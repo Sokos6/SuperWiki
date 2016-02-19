@@ -25,7 +25,6 @@ public class LoginController
 	private LoginDAO loginDao;
 	@Autowired
 	private SuperDAO superDao;
-	static User user;
 
 	@ModelAttribute("user")
 	public User createUser()
@@ -49,7 +48,6 @@ public class LoginController
 	@RequestMapping(path = "login.do", method = RequestMethod.GET, params = { "username", "password" })
 	public ModelAndView homePage(@RequestParam("username") String username, @RequestParam("password") String password, @ModelAttribute("user") User user, @ModelAttribute("admin") Boolean admin)
 	{
-		System.out.println(username + " " + password);
 		try
 		{
 			user = loginDao.getUser(username, password);			
@@ -63,7 +61,7 @@ public class LoginController
 		catch (Exception e)
 		{	
 			
-			user = loginDao.getUser("guest", "guest");			
+			user = loginDao.getUser(2);			
 			ModelAndView mv = new ModelAndView();
 			mv.setViewName("error.jsp");
 			mv.addObject("user", user);
@@ -75,9 +73,8 @@ public class LoginController
 	public ModelAndView logout(@ModelAttribute("user") User user, @ModelAttribute("admin") Boolean admin)
 	{
 		admin = false;
-		user.setId(2);
-		user.setUsername("guest");
-		user.setPassword("guest");
+		user = loginDao.getUser(2);
+		
 		ModelAndView mv = new ModelAndView();
 		mv.setViewName("index.html");
 		mv.addObject("user", user);
@@ -104,7 +101,6 @@ public class LoginController
 			loginDao.addFavorites(sp, user);
 			user = loginDao.refreshUser(user);
 			ModelAndView mv = profile(user, admin);
-			mv.addObject("admin", false);
 			return mv;
 		}
 	}
