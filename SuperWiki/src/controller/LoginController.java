@@ -29,9 +29,10 @@ public class LoginController
 	@ModelAttribute("user")
 	public User createUser()
 	{
-//		user = loginDao.getUser(2);
-//		return user;
-		return loginDao.getUser(2);
+		User user = new User();
+		user.setId(2);
+		user.setUsername(null);
+		return user;
 	}
 	@ModelAttribute("admin")
 	public Boolean createAdmin()
@@ -53,7 +54,7 @@ public class LoginController
 			user = loginDao.getUser(username, password);			
 			admin = user.isAdmin();
 			ModelAndView mv = new ModelAndView();
-			mv.setViewName("index.jsp");
+			mv.setViewName("home.jsp");
 			mv.addObject("user", user);
 			mv.addObject("admin", admin);
 			return mv;
@@ -61,7 +62,8 @@ public class LoginController
 		catch (Exception e)
 		{	
 			
-			user = loginDao.getUser(2);			
+			//user = loginDao.getUser(2);	
+			
 			ModelAndView mv = new ModelAndView();
 			mv.setViewName("error.jsp");
 			mv.addObject("user", user);
@@ -73,10 +75,14 @@ public class LoginController
 	public ModelAndView logout(@ModelAttribute("user") User user, @ModelAttribute("admin") Boolean admin)
 	{
 		admin = false;
+
 		user = loginDao.getUser(2);
-		
+
+		user.setId(2);
+		user.setUsername(null);
+		user.setPassword("guest");
 		ModelAndView mv = new ModelAndView();
-		mv.setViewName("index.html");
+		mv.setViewName("home.jsp");
 		mv.addObject("user", user);
 		mv.addObject("admin", admin);
 		return mv;
@@ -153,6 +159,12 @@ public class LoginController
 //		mv.setViewName("profile.jsp");
 //		mv.addObject("admin", admin);
 //		mv.addObject("user", user);
+		return mv;
+	}
+	@RequestMapping("index.do")
+	public ModelAndView index(){
+		ModelAndView mv = new ModelAndView();
+		mv.setViewName("home.jsp");
 		return mv;
 	}
 }
