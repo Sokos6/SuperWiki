@@ -73,7 +73,7 @@
 		</div>
 	</form>
 	<form action="addFav.do" method="POST">
-		<input type="submit" class="btn" value="favorite" /> <input type="hidden"
+		<input type="submit" class="btn btn-default" value="favorite" /> <input type="hidden"
 			name="selectionid" value="${result.id}" />
 	</form>
 	</c:if>

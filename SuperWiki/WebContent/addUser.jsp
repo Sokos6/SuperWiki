@@ -20,6 +20,7 @@
 		<div class="form-group">
 		<label for="Email">Email: </label> <input type = "text" name = "email" class="form-control" id="email"/>
 		<input type = "submit" value = "Create" class="btn btn-default"/>
+		</div>
 	</form>
 </div>
 <div class="banner">

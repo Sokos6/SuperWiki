@@ -42,9 +42,9 @@
 		</div>
 		<br>
 		<div class="form-group">
-		<input type="radio" name="good" value="true">superhero
+		<input type="radio" name="good" value="true" checked="checked">superhero
 		<input type="radio" name="good" value="false">villain
-		<input type = "submit" value = "Update"/>
+		<input type = "submit" class = "btn btn-default" value = "Update"/>
 		</div>
 	</form>
 	</div>

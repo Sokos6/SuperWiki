@@ -8,6 +8,7 @@
 <body>
 <jsp:include page="_nav.jsp"></jsp:include>
 <div class="logintop">
+<img src="img/superheroes-characters.jpg" class = "image-responsive">
 <h1>LOGIN TO USE YOUR SUPERWIKI ACCOUNT</h1>
 	<form action = "login.do" method = "GET">
 		<div class="login">		
@@ -18,7 +19,7 @@
 		<label for="password">Password: </label><input type= "password" class="form-control" name ="password" placeholder = "password"/>	
 		</div>
 		<div class="form-group">
-		<label for="Submit"></label><input type = "submit" class="btn btn-defualt" value = "Login"/>	
+		<label for="Submit"></label><input type = "submit" class="btn btn-default" value = "Login"/>	
 		</div>
 		</div>
 	</form>
@@ -39,7 +40,7 @@
                             <a href="https://github.com/Sokos6/SuperWiki" target="_blank" class="btn btn-default btn-lg"><i class="fa fa-github fa-fw"></i> <span class="network-name">Github</span></a>
                         </li>
                         <li>
-                            <a href="https://www.facebook.com/SuperWiki-1511957842442437/" target="_blank" class="btn btn-default btn-lg"><i class="fa fa-linkedin fa-fw"></i> <span class="network-name">Linkedin</span></a>
+                            <a href="https://www.facebook.com/SuperWiki-1511957842442437/" target="_blank" class="btn btn-default btn-lg"><i class="fa fa-facebook fa-fw"></i> <span class="network-name">Facebook</span></a>
                         </li>
                     </ul>
                 </div>
