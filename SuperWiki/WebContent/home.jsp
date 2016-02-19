@@ -22,13 +22,13 @@
                         <hr class="intro-divider">
                         <ul class="list-inline intro-social-buttons">
                             <li>
-                                <a href="https://twitter.com/SBootstrap" class="btn btn-default btn-lg"><i class="fa fa-twitter fa-fw"></i> <span class="network-name">Twitter</span></a>
+                                <a href="https://twitter.com/theSuperWiki" target="_blank" class="btn btn-default btn-lg"><i class="fa fa-twitter fa-fw"></i> <span class="network-name">Twitter</span></a>
                             </li>
                             <li>
-                                <a href="https://github.com/IronSummitMedia/startbootstrap" class="btn btn-default btn-lg"><i class="fa fa-github fa-fw"></i> <span class="network-name">Github</span></a>
+                                <a href="https://github.com/Sokos6/SuperWiki" target="_blank" class="btn btn-default btn-lg"><i class="fa fa-github fa-fw"></i> <span class="network-name">Github</span></a>
                             </li>
                             <li>
-                                <a href="#" class="btn btn-default btn-lg"><i class="fa fa-linkedin fa-fw"></i> <span class="network-name">Linkedin</span></a>
+                                <a href="https://www.facebook.com/SuperWiki-1511957842442437/" target="_blank" class="btn btn-default btn-lg"><i class="fa fa-facebook fa-fw"></i> <span class="network-name">Facebook</span></a>
                             </li>
                         </ul>
                     </div>
@@ -52,7 +52,7 @@
                     <hr class="section-heading-spacer">
                     <div class="clearfix"></div>
                     <h2 class="section-heading">Signup Today! Create an account and support the SuperWiki!<br>Talk about your favorite comic book characters!</h2>
-                    <p class="lead">Signup for your FREE account <a target="_blank" href="http://join.deathtothestockphoto.com/">Here</a>. Join in on the Conversation. Be a SuperWiki Contributor!</p>
+                    <p class="lead">Signup for your FREE account <a href="addUser.do">Here</a>. Join in on the Conversation. Be a SuperWiki Contributor!</p>
                 </div>
                 <div class="col-lg-5 col-lg-offset-2 col-sm-6">
                     <img class="img-responsive" src="img/ipad.png" alt="">
@@ -74,7 +74,7 @@
                     <hr class="section-heading-spacer">
                     <div class="clearfix"></div>
                     <h2 class="section-heading">Add your favorite<br>Character!</h2>
-                    <p class="lead">Don't see your favorite Supehero or Villain? Be a Super Contributor and add them <a target="_blank" href="http://www.psdcovers.com/">HERE!</a>! Simply fill out the form and add your favorite character. It's as easy as that!</p>
+                    <p class="lead">Don't see your favorite Supehero or Villain? Be a Super Contributor and add them <a href="addSuperhero.do">HERE!</a>! Simply fill out the form and add your favorite character. It's as easy as that!</p>
                 </div>
                 <div class="col-lg-5 col-sm-pull-6  col-sm-6">
                     <img class="img-responsive" src="img/dog.png" alt="">
@@ -95,8 +95,8 @@
                 <div class="col-lg-5 col-sm-6">
                     <hr class="section-heading-spacer">
                     <div class="clearfix"></div>
-                    <h2 class="section-heading">Do something else<br>that is awesome!</h2>
-                    <p class="lead">This is where something else cool goes! <a target="_blank" href="http://www.google.com/fonts">CoolHuh?</a>, as well as <a target="_blank" href="http://fontawesome.io">whatever we decide to put here!</a>.</p>
+                    <h2 class="section-heading">Check out<br>your favorite Superhero!</h2>
+                    <p class="lead">Love Superheroes? Click <a href="allSuperheroes.do">Here!?</a>, Villains? <a href="allVillains.do">Here Ya Go!</a>.</p>
                 </div>
                 <div class="col-lg-5 col-lg-offset-2 col-sm-6">
                     <img class="img-responsive" src="img/phones.png" alt="">
@@ -116,18 +116,18 @@
 
             <div class="row">
                 <div class="col-lg-6">
-                    <h2>Connect to Comic Booked:</h2>
+                    <h2>Connect to SuperWiki:</h2>
                 </div>
                 <div class="col-lg-6">
                     <ul class="list-inline banner-social-buttons">
                         <li>
-                            <a href="https://twitter.com/comicbooked" class="btn btn-default btn-lg"><i class="fa fa-twitter fa-fw"></i> <span class="network-name">Twitter</span></a>
+                            <a href="https://twitter.com/theSuperWiki" target="_blank" class="btn btn-default btn-lg"><i class="fa fa-twitter fa-fw"></i> <span class="network-name">Twitter</span></a>
                         </li>
                         <li>
-                            <a href="https://github.com/IronSummitMedia/startbootstrap" class="btn btn-default btn-lg"><i class="fa fa-github fa-fw"></i> <span class="network-name">Github</span></a>
+                            <a href="https://github.com/Sokos6/SuperWiki" target="_blank" class="btn btn-default btn-lg"><i class="fa fa-github fa-fw"></i> <span class="network-name">Github</span></a>
                         </li>
                         <li>
-                            <a href="#" class="btn btn-default btn-lg"><i class="fa fa-linkedin fa-fw"></i> <span class="network-name">Linkedin</span></a>
+                            <a href="https://www.facebook.com/SuperWiki-1511957842442437/" target="_blank" class="btn btn-default btn-lg"><i class="fa fa-facebook fa-fw"></i> <span class="network-name">Facebook</span></a>
                         </li>
                     </ul>
                 </div>
@@ -138,6 +138,5 @@
 
     </div>
     <!-- /.banner -->
-<jsp:include page="_footer.jsp"></jsp:include>
 </body>
 </html>

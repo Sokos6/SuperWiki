@@ -1,3 +1,5 @@
+<%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
+
 <nav class="navbar navbar-default navbar-fixed-top topnav" role="navigation">
         <div class="container topnav">
             <!-- Brand and toggle get grouped for better mobile display -->
@@ -20,14 +22,22 @@
                         <a href="allSuperheroes.do">Superheroes</a>
                     </li>
                     <li>
-                        <a href="addSuperhero.do">Add Characther</a>
+                        <a href="allVillains.do">Villains</a>
                     </li>
+                    <li>
+                        <a href="addSuperhero.do">Add Character</a>
+                    </li>
+                    <c:choose>
+                    <c:when test="${user.id!=2 || user !=null}"><li><a href="logout.do">Logout</a></li></c:when>
+                    <c:otherwise>
                     <li>
                         <a href="addUser.do">Register</a>
                     </li>
                     <li>
                         <a href="login.do">Login</a>
                     </li>
+                    </c:otherwise>
+</c:choose>
                 </ul>
             </div>
             <!-- /.navbar-collapse -->

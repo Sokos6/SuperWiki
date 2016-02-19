@@ -30,7 +30,7 @@ public class LoginController
 	@ModelAttribute("user")
 	public User createUser()
 	{
-		user = new User();
+		user = loginDao.getUser(2);
 		return user;
 	}
 	@ModelAttribute("admin")
@@ -60,9 +60,10 @@ public class LoginController
 			return mv;
 		}
 		catch (Exception e)
-		{			
+		{	
+			
+			user = loginDao.getUser("guest", "guest");			
 			ModelAndView mv = new ModelAndView();
-			user.setUsername("");
 			mv.setViewName("error.jsp");
 			mv.addObject("user", user);
 			mv.addObject("admin", admin);
@@ -70,19 +71,42 @@ public class LoginController
 		}
 	}
 	@RequestMapping(path = "logout.do", method = RequestMethod.GET)
-	public String logout()
+	public ModelAndView logout(@ModelAttribute("user") User user, @ModelAttribute("admin") Boolean admin)
 	{
-		return "index.html";
+		admin = false;
+		user.setId(2);
+		user.setUsername("guest");
+		user.setPassword("guest");
+		ModelAndView mv = new ModelAndView();
+		mv.setViewName("home.jsp");
+		mv.addObject("user", user);
+		mv.addObject("admin", admin);
+		return mv;
 	}
 
 	@RequestMapping(path = "addFav.do", method = RequestMethod.POST)
 	public ModelAndView addFav(@RequestParam("selectionid") int id, @ModelAttribute("user") User user, @ModelAttribute("admin") Boolean admin)
 	{
 		SuperPersons sp = superDao.getById(id);
-		loginDao.addFavorites(sp, user);
-		user = loginDao.refreshUser(user);
-		ModelAndView mv = profile(user, admin );
-		return mv;
+		try
+		{			
+			loginDao.addFavorites(sp, user);
+			user = loginDao.refreshUser(user);
+			ModelAndView mv = profile(user, admin );
+			return mv;
+		}
+		catch(Exception e)
+		{			
+			user.setId(2);
+			user.setUsername("guest");
+			user.setPassword("guest");
+			loginDao.addFavorites(sp, user);
+			user = loginDao.refreshUser(user);
+			ModelAndView mv = profile(user, admin);
+			mv.addObject("admin", false);
+			return mv;
+		}
+//		System.out.println(user.getUsername() + " " + user.getPassword());
 	}
 	
 	@RequestMapping(path = "addUser.do", method = RequestMethod.GET)

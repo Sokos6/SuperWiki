@@ -44,6 +44,7 @@ public class SuperPersons {
 	private String publisher;
 	@Enumerated(EnumType.STRING)
 	private SuperType superType;
+	private String image;
 	@ManyToMany
 	@JoinTable(name = "nemesis", joinColumns = @JoinColumn(name = "superperson_id") , inverseJoinColumns = @JoinColumn(name = "nemesis_id") )
 	private List<SuperPersons> nemesis = new ArrayList<SuperPersons>();
@@ -165,6 +166,16 @@ public class SuperPersons {
 	public void setComments(List<Comment> comments)
 	{
 		this.comments = comments;
+	}
+
+	public String getImage()
+	{
+		return image;
+	}
+
+	public void setImage(String image)
+	{
+		this.image = image;
 	}
 
 	@Override

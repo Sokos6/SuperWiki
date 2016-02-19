@@ -10,6 +10,5 @@
 <jsp:include page="_nav.jsp"></jsp:include>
 	<p>No account with that username exists</p>
 	<a href="index.html">HOME</a>
-<jsp:include page="_footer.jsp"></jsp:include>
 </body>
 </html>

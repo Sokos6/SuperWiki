@@ -9,11 +9,54 @@ margin-top: 100px;
     height: auto;
 }
 
-footer {
-    position: fixed;
-    left: 0;
-    bottom: 0;
-    height: 100px;
-    width: 100%;
-    overflow:hidden;
-} 
+
+.login {
+	padding-top: 50px;
+}
+
+.characterresult {
+	padding-top: 50px;
+	
+}
+
+.resultlistimg {
+	width: 100%;
+	height: auto;
+}
+
+.result {
+	padding-top: 50px;
+}
+
+.indivcharimg {
+	width: 100px;
+	height: auto;
+}
+
+.adduser {
+	padding-top: 50px;
+}
+
+.signuptext {
+	float: right;
+}
+
+.logintop {
+	padding-top: 50px;
+}
+
+.profile {
+	padding-top: 50px;
+}
+
+#grover {
+	width: 100%;
+}
+
+.updatecomment {
+	padding-top: 50px;
+}
+
+.updatecharacter {
+	padding-top: 50px;
+}

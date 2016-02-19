@@ -7,6 +7,7 @@
 </head>
 <body>
 <jsp:include page="_nav.jsp"></jsp:include>
+	<div class="updatecomment">
 	<p>Logged in as: ${user.username}</p>
 	<p>${result.name}</p>
 	<p>${result.alias}</p>
@@ -17,7 +18,7 @@
 	<p>${result.publisher }</p>
 	<br>
 	<a href="updateCharacter.do?id=${result.id }">Update</a>
-		<table>
+		<table class="table table-bordered">
 		<td>${comment.user.username}</td>
 		<td><form action="updateComment.do" method="POST">
 									<input type="hidden" name="commentid" value="${comment.id }"><input
@@ -26,6 +27,6 @@
 										<input type="submit" value="Post" />
 								</form></td>
 		</table>
-<jsp:include page="_footer.jsp"></jsp:include>
+</div>
 </body>
 </html>

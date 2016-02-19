@@ -92,7 +92,7 @@ public class SuperController
 			sp.setSuperType(SuperType.villain);
 		}
 		superDao.addSuperPerson(sp);
-		ModelAndView mv = getByName(sp.getName());
+		ModelAndView mv = getAllCharacters();
 		return mv;
 	}
 
