@@ -30,9 +30,14 @@ public class LoginController
 	@ModelAttribute("user")
 	public User createUser()
 	{
+<<<<<<< HEAD
+		user = loginDao.getUser(2);
+		return user;
+=======
 //		user = loginDao.getUser(2);
 //		return user;
 		return loginDao.getUser(2);
+>>>>>>> 033c85abd90c814deacd4b40523564680dfdcd71
 	}
 	@ModelAttribute("admin")
 	public Boolean createAdmin()
@@ -79,7 +84,7 @@ public class LoginController
 		user.setUsername(null);
 		user.setPassword("guest");
 		ModelAndView mv = new ModelAndView();
-		mv.setViewName("index.html");
+		mv.setViewName("home.jsp");
 		mv.addObject("user", user);
 		mv.addObject("admin", admin);
 		return mv;
