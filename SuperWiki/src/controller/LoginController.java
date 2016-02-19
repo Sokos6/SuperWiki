@@ -74,12 +74,17 @@ public class LoginController
 		}
 	}
 	@RequestMapping(path = "logout.do", method = RequestMethod.GET)
-	public String logout()
+	public ModelAndView logout(@ModelAttribute("user") User user, @ModelAttribute("admin") Boolean admin)
 	{
+		admin = false;
 		user.setId(2);
 		user.setUsername("guest");
 		user.setPassword("guest");
-		return "index.html";
+		ModelAndView mv = new ModelAndView();
+		mv.setViewName("index.html");
+		mv.addObject("user", user);
+		mv.addObject("admin", admin);
+		return mv;
 	}
 
 	@RequestMapping(path = "addFav.do", method = RequestMethod.POST)
@@ -100,7 +105,8 @@ public class LoginController
 			user.setPassword("guest");
 			loginDao.addFavorites(sp, user);
 			user = loginDao.refreshUser(user);
-			ModelAndView mv = profile(user, admin );
+			ModelAndView mv = profile(user, admin);
+			mv.addObject("admin", false);
 			return mv;
 		}
 //		System.out.println(user.getUsername() + " " + user.getPassword());
