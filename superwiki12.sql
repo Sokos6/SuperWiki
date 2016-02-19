@@ -33,7 +33,7 @@ CREATE TABLE `comment` (
   KEY `fk_comment_superpersons1_idx` (`superpersons_id`),
   CONSTRAINT `id` FOREIGN KEY (`user_id`) REFERENCES `user` (`id`) ON DELETE CASCADE ON UPDATE CASCADE,
   CONSTRAINT `fk_comment_superpersons1` FOREIGN KEY (`superpersons_id`) REFERENCES `superpersons` (`id`) ON DELETE NO ACTION ON UPDATE NO ACTION
-) ENGINE=InnoDB AUTO_INCREMENT=6 DEFAULT CHARSET=latin1;
+) ENGINE=InnoDB AUTO_INCREMENT=2 DEFAULT CHARSET=latin1;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -42,6 +42,7 @@ CREATE TABLE `comment` (
 
 LOCK TABLES `comment` WRITE;
 /*!40000 ALTER TABLE `comment` DISABLE KEYS */;
+INSERT INTO `comment` VALUES (1,1,'tony stark is played by rdj','2016-02-16 00:00:00',1);
 /*!40000 ALTER TABLE `comment` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -61,7 +62,7 @@ CREATE TABLE `favorite_superpersons` (
   KEY `fk_superpersons_has_user_superpersons1_idx` (`superpersons_id`),
   CONSTRAINT `fk_superpersons_has_user_user1` FOREIGN KEY (`user_id`) REFERENCES `user` (`id`) ON DELETE CASCADE ON UPDATE NO ACTION,
   CONSTRAINT `fk_superpersons_has_user_superpersons1` FOREIGN KEY (`superpersons_id`) REFERENCES `superpersons` (`id`) ON DELETE NO ACTION ON UPDATE NO ACTION
-) ENGINE=InnoDB AUTO_INCREMENT=25 DEFAULT CHARSET=latin1;
+) ENGINE=InnoDB AUTO_INCREMENT=21 DEFAULT CHARSET=latin1;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -70,7 +71,7 @@ CREATE TABLE `favorite_superpersons` (
 
 LOCK TABLES `favorite_superpersons` WRITE;
 /*!40000 ALTER TABLE `favorite_superpersons` DISABLE KEYS */;
-INSERT INTO `favorite_superpersons` VALUES (14,1,1),(21,2,2),(22,11,3),(23,15,1),(24,2,1);
+INSERT INTO `favorite_superpersons` VALUES (14,1,1);
 /*!40000 ALTER TABLE `favorite_superpersons` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -117,11 +118,11 @@ CREATE TABLE `superpersons` (
   `origin` varchar(42000) DEFAULT NULL,
   `publisher` varchar(100) DEFAULT NULL,
   `supertype` varchar(45) NOT NULL,
-  `image` varchar(8000) DEFAULT NULL,
+  `image` mediumtext,
   PRIMARY KEY (`id`),
   KEY `fk_Superhero_Team_idx` (`Team_id`),
   CONSTRAINT `alias_name` FOREIGN KEY (`Team_id`) REFERENCES `teams` (`id`) ON DELETE NO ACTION ON UPDATE NO ACTION
-) ENGINE=InnoDB AUTO_INCREMENT=17 DEFAULT CHARSET=latin1;
+) ENGINE=InnoDB AUTO_INCREMENT=18 DEFAULT CHARSET=latin1;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -130,7 +131,7 @@ CREATE TABLE `superpersons` (
 
 LOCK TABLES `superpersons` WRITE;
 /*!40000 ALTER TABLE `superpersons` DISABLE KEYS */;
-INSERT INTO `superpersons` VALUES (1,'Iron Man','Tony Stark','1963','Stan Lee',1,'','Marvel Comics','superhero'),(2,'Captain America','Steve Rogers','1941','Stan Lee',1,'','Marvel Comics','superhero'),(3,'The Incredible Hulk','Bruce Banner','1962','Stan Lee',1,'','Marvel Comics','superhero'),(4,'Thor',NULL,'1951','Stan Lee',1,'','Marvel Comics','superhero'),(5,'Black Widow','Natasha Romanoff','1964','Stan Lee',1,'','Marvel Comics','superhero'),(6,'Hawkeye','Clint Barton','1964','Stan Lee',1,'','Marvel Comics','superhero'),(7,'Doctor Doom','Victor Von Doom','1962','Jack Kirby',NULL,NULL,'Marvel Comics','villain'),(8,'Venom','Eddie Brock','1988','Todd McFarlane',NULL,NULL,'Marvel Comics','villain'),(9,'Magneto','Max Eisenhaurdt','1963','Stan Lee, Jack Kirby',NULL,NULL,'Marvel Comics','villain'),(10,'Galactus','Galan','1966','Stan Lee, Jack Kirby',NULL,NULL,'Marvel Comics','villain'),(11,'Carnage','Cletus Kasady','1992','Mark Bagley',NULL,NULL,'Marvel Comics','villain'),(12,'Wolverine','Logan','The Incredible Hulk #180','stan lee',NULL,'','Marvel Comics','superhero'),(13,'Batman','Bruce Wayne','Detective Comics #27','Bob Kane, Bill Finger',NULL,NULL,'DC Comics','superhero'),(14,'Superman','Clark Kent','Action Comcis #1','Jerry Siegel, Joe Shuster',NULL,NULL,'DC Comics','superhero'),(15,'Spider-Man','Peter Park','Amazing Fantasy #15','Stan Lee, Steve Ditko',NULL,NULL,'Marvel Comics','superhero'),(16,'The Joker',NULL,'debut issue of Batman','Bill Finger, Bob Kane, and Jerry Robinson',NULL,NULL,'DC Comics','villain');
+INSERT INTO `superpersons` VALUES (1,'Iron Man','Tony Stark','1963','Stan Lee',1,'  ','Marvel Comics','superhero','http://www.comicbookreligion.com/img/i/r/Iron_Man_Tony_Stark.jpg'),(2,'Captain America','Steve Rogers','1941','Stan Lee',1,'','Marvel Comics','superhero','http://static.comicvine.com/uploads/scale_medium/0/40/79617-148996-captain-america.jpg'),(3,'The Incredible Hulk','Bruce Banner','1962','Stan Lee',1,'','Marvel Comics','superhero','http://static.comicvine.com/uploads/original/11119/111192788/4339856-2329158772-33526.jpg'),(4,'Thor',NULL,'1951','Stan Lee',1,'','Marvel Comics','superhero','http://static.comicvine.com/uploads/scale_super/8/83882/2030589-thor_by_deodato.jpg'),(5,'Black Widow','Natasha Romanoff','1964','Stan Lee',1,'','Marvel Comics','superhero','http://static.comicvine.com/uploads/scale_small/14/148344/4594966-bw.jpg'),(6,'Hawkeye','Clint Barton','1964','Stan Lee',1,'','Marvel Comics','superhero','http://static.comicvine.com/uploads/scale_medium/3/39001/875377-hawkeye.jpg'),(7,'Doctor Doom','Victor Von Doom','1962','Jack Kirby',NULL,NULL,'Marvel Comics','villain','http://www.fantastic-four.nl/doctordoom_.gif'),(8,'Venom','Eddie Brock','1988','Todd McFarlane',NULL,NULL,'Marvel Comics','villain','http://vignette2.wikia.nocookie.net/spiderman/images/4/46/Info_Venom.jpg/revision/latest?cb=20130330113625&path-prefix=de'),(9,'Magneto','Max Eisenhaurdt','1963','Stan Lee, Jack Kirby',NULL,NULL,'Marvel Comics','villain','http://vignette4.wikia.nocookie.net/marveldatabase/images/3/36/Max_Eisenhardt_(Earth-616)_from_Avengers_vs._X-Men_Vol_1_11.png/revision/latest?cb=20120912204315'),(10,'Galactus','Galan','1966','Stan Lee, Jack Kirby',NULL,NULL,'Marvel Comics','villain','http://vignette2.wikia.nocookie.net/marveldatabase/images/9/92/Galactus_(Earth-TRN177).jpg/revision/latest?cb=20110416002346'),(11,'Carnage','Cletus Kasady','1992','Mark Bagley',NULL,NULL,'Marvel Comics','villain','http://www.writeups.org/img/inset/Carnage_h509.jpg'),(12,'Wolverine','Logan','The Incredible Hulk #180','stan lee',NULL,'','Marvel Comics','superhero','https://universaldork.files.wordpress.com/2013/11/wolv-bigcostume3.jpg'),(13,'Batman','Bruce Wayne','Detective Comics #27','Bob Kane, Bill Finger',NULL,NULL,'DC Comics','superhero','https://s-media-cache-ak0.pinimg.com/236x/a5/cc/11/a5cc11f8ab5709728f7fd216884ceb37.jpg'),(14,'Superman','Clark Kent','Action Comcis #1','Jerry Siegel, Joe Shuster',NULL,NULL,'DC Comics','superhero','http://manapop.com/wp-content/uploads/2015/04/Superman-the-icon.jpg'),(15,'Spider-Man','Peter Park','Amazing Fantasy #15','Stan Lee, Steve Ditko',NULL,NULL,'Marvel Comics','superhero','http://static.comicvine.com/uploads/original/11113/111136785/3815179-3763752-0611947250-spide.jpg'),(16,'The Joker',NULL,'debut issue of Batman','Bill Finger, Bob Kane, and Jerry Robinson',NULL,NULL,'DC Comics','villain','http://vignette2.wikia.nocookie.net/batman/images/d/da/TheJoker_01.jpg/revision/latest?cb=20090721072603');
 /*!40000 ALTER TABLE `superpersons` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -227,4 +228,4 @@ UNLOCK TABLES;
 /*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
 /*!40111 SET SQL_NOTES=@OLD_SQL_NOTES */;
 
--- Dump completed on 2016-02-18 15:18:14
+-- Dump completed on 2016-02-18 16:46:39

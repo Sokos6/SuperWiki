@@ -8,6 +8,7 @@
 </head>
 <body>
 	<p>Logged in as: ${user.username}</p>
+	<img src="${result.image }" alt="${result.name }"/>
 	<p>${result.name}</p>
 	<p>${result.alias}</p>
 	<p>${result.creator }</p>

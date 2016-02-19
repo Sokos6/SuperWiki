@@ -20,6 +20,9 @@
 		<br>
 		Publisher:<input type="text" name="publisher" value="${character.publisher }"/>
 		<br>
+		<br>
+		Image <input type="text" name="image" value="${character.image }">
+		<br>
 		<input type="radio" name="good" value="true">superhero
 		<input type="radio" name="good" value="false">villain
 		<input type = "submit" value = "Update"/>

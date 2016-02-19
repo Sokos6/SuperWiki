@@ -25,17 +25,6 @@ public class LoginDAO
 	}
 	public void addUser(User newUser)
 	{
-		List<User> users = em.createQuery("select u from User u", User.class).getResultList();
-		boolean match = true;
-		for (User user : users)
-		{
-			if (user.getUsername().equals(newUser.getUsername()))
-			{
-				match = false;
-				break;
-			}
-		}
-		if (match)
 			em.persist(newUser);
 	}
 

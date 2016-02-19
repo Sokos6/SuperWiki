@@ -62,6 +62,7 @@ public class SuperDAO {
 		sperson.setOrigin(sp.getOrigin());
 		sperson.setPublisher(sp.getPublisher());
 		sperson.setSuperType(sp.getSuperType());
+		sperson.setImage(sp.getImage());
 		em.persist(sperson);
 	}
 	public SuperPersons refreshSuperPersons(SuperPersons sp){
