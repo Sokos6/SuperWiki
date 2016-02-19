@@ -25,16 +25,14 @@ public class LoginController
 	private LoginDAO loginDao;
 	@Autowired
 	private SuperDAO superDao;
-	User user;
+	static User user;
 
 	@ModelAttribute("user")
 	public User createUser()
 	{
-		user = new User();
-		user.setId(2);
-		user.setUsername("guest");
-		user.setPassword("guest");
-		return user;
+//		user = loginDao.getUser(2);
+//		return user;
+		return loginDao.getUser(2);
 	}
 	@ModelAttribute("admin")
 	public Boolean createAdmin()
@@ -95,7 +93,7 @@ public class LoginController
 		{			
 			loginDao.addFavorites(sp, user);
 			user = loginDao.refreshUser(user);
-			ModelAndView mv = profile(user, admin );
+			ModelAndView mv = profile(user, admin);
 			return mv;
 		}
 		catch(Exception e)
@@ -109,7 +107,6 @@ public class LoginController
 			mv.addObject("admin", false);
 			return mv;
 		}
-//		System.out.println(user.getUsername() + " " + user.getPassword());
 	}
 	
 	@RequestMapping(path = "addUser.do", method = RequestMethod.GET)
