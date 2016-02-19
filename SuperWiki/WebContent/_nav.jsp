@@ -8,19 +8,25 @@
                     <span class="icon-bar"></span>
                     <span class="icon-bar"></span>
                 </button>
-                <a class="navbar-brand topnav" href="#">SuperWiki</a>
+                <a class="navbar-brand topnav" href="home.jsp">SuperWiki</a>
             </div>
             <!-- Collect the nav links, forms, and other content for toggling -->
             <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
                 <ul class="nav navbar-nav navbar-right">
                     <li>
-                        <a href="#about">About</a>
+                        <a href="allCharacters.do">All Characters</a>
                     </li>
                     <li>
-                        <a href="#services">Signup</a>
+                        <a href="allSuperheroes.do">Superheroes</a>
                     </li>
                     <li>
-                        <a href="#contact">Login</a>
+                        <a href="addSuperhero.do">Add Characther</a>
+                    </li>
+                    <li>
+                        <a href="addUser.do">Register</a>
+                    </li>
+                    <li>
+                        <a href="login.do">Login</a>
                     </li>
                 </ul>
             </div>

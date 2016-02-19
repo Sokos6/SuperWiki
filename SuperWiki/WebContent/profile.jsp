@@ -7,6 +7,7 @@
 <title>Profile | SuperWiki</title>
 </head>
 <body>
+<div id="wrapper">
 	<p>Logged in as: ${user.username}</p>
 	<p>Favorite Characters</p>
 	<table>
@@ -35,5 +36,6 @@
 	</c:if>
 	<a href="index.jsp">HOME</a>
 <jsp:include page="_footer.jsp"></jsp:include>
+</div>
 </body>
 </html>

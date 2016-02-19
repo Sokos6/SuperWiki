@@ -2,10 +2,11 @@
 <!DOCTYPE html>
 <html>
 <head>
-<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+<jsp:include page="_head.jsp"></jsp:include>
 <title>Update ${character.name}</title>
 </head>
 <body>
+<jsp:include page="_nav.jsp"></jsp:include>
 	<p>Logged in as: ${user.username}</p>
 	<form action="updateCharacter.do" method="post">
 	<input type="hidden" name="id" value="${character.id }"/>
@@ -24,5 +25,6 @@
 		<input type="radio" name="good" value="false">villain
 		<input type = "submit" value = "Update"/>
 	</form>
+<jsp:include page="_footer.jsp"></jsp:include>
 </body>
 </html>
