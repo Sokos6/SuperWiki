@@ -62,7 +62,8 @@
 			</c:forEach>
 		</table>
 	</c:if >
-	<%-- <c:when test="${}"> --%>
+
+	<c:if test = "${user.username != null}">
 	<form action="addComment.do" method="POST">
 		<div class="form-group">
 		<input type="hidden" name="superPersonID" value="${result.id }" />
@@ -75,6 +76,7 @@
 		<input type="submit" class="btn" value="favorite" /> <input type="hidden"
 			name="selectionid" value="${result.id}" />
 	</form>
+	</c:if>
 </div>
 </body>
 </html>

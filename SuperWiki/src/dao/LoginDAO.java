@@ -21,7 +21,9 @@ public class LoginDAO
 	public User getUser(String username, String password)
 	{
 		String query = "select u from User u where u.username = '" + username + "' and u.password = '" + password + "'";
-		return em.createQuery(query, User.class).getSingleResult();
+		User user = em.createQuery(query, User.class).getSingleResult();
+		user = refreshUser(user);
+		return user;
 	}
 	public void addUser(User newUser)
 	{
