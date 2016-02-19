@@ -31,6 +31,9 @@ public class LoginController
 	public User createUser()
 	{
 		user = new User();
+		user.setId(2);
+		user.setUsername("guest");
+		user.setPassword("guest");
 		return user;
 	}
 	@ModelAttribute("admin")
@@ -49,29 +52,64 @@ public class LoginController
 	public ModelAndView homePage(@RequestParam("username") String username, @RequestParam("password") String password, @ModelAttribute("user") User user, @ModelAttribute("admin") Boolean admin)
 	{
 		System.out.println(username + " " + password);
-		user = loginDao.getUser(username, password);
-		admin = user.isAdmin();
-		System.out.println(user.getId());
+		try
+		{
+			user = loginDao.getUser(username, password);			
+			admin = user.isAdmin();
+			ModelAndView mv = new ModelAndView();
+			mv.setViewName("index.jsp");
+			mv.addObject("user", user);
+			mv.addObject("admin", admin);
+			return mv;
+		}
+		catch (Exception e)
+		{	
+			
+			user = loginDao.getUser("guest", "guest");			
+			ModelAndView mv = new ModelAndView();
+			mv.setViewName("error.jsp");
+			mv.addObject("user", user);
+			mv.addObject("admin", admin);
+			return mv;
+		}
+	}
+	@RequestMapping(path = "logout.do", method = RequestMethod.GET)
+	public ModelAndView logout(@ModelAttribute("user") User user, @ModelAttribute("admin") Boolean admin)
+	{
+		admin = false;
+		user.setId(2);
+		user.setUsername("guest");
+		user.setPassword("guest");
 		ModelAndView mv = new ModelAndView();
-		mv.setViewName("index.jsp");
+		mv.setViewName("index.html");
 		mv.addObject("user", user);
 		mv.addObject("admin", admin);
 		return mv;
-	}
-	@RequestMapping(path = "logout.do", method = RequestMethod.GET)
-	public String logout()
-	{
-		return "index.html";
 	}
 
 	@RequestMapping(path = "addFav.do", method = RequestMethod.POST)
 	public ModelAndView addFav(@RequestParam("selectionid") int id, @ModelAttribute("user") User user, @ModelAttribute("admin") Boolean admin)
 	{
 		SuperPersons sp = superDao.getById(id);
-		loginDao.addFavorites(sp, user);
-		user = loginDao.refreshUser(user);
-		ModelAndView mv = profile(user, admin );
-		return mv;
+		try
+		{			
+			loginDao.addFavorites(sp, user);
+			user = loginDao.refreshUser(user);
+			ModelAndView mv = profile(user, admin );
+			return mv;
+		}
+		catch(Exception e)
+		{			
+			user.setId(2);
+			user.setUsername("guest");
+			user.setPassword("guest");
+			loginDao.addFavorites(sp, user);
+			user = loginDao.refreshUser(user);
+			ModelAndView mv = profile(user, admin);
+			mv.addObject("admin", false);
+			return mv;
+		}
+//		System.out.println(user.getUsername() + " " + user.getPassword());
 	}
 	
 	@RequestMapping(path = "addUser.do", method = RequestMethod.GET)

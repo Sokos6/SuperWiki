@@ -33,7 +33,7 @@ CREATE TABLE `comment` (
   KEY `fk_comment_superpersons1_idx` (`superpersons_id`),
   CONSTRAINT `id` FOREIGN KEY (`user_id`) REFERENCES `user` (`id`) ON DELETE CASCADE ON UPDATE CASCADE,
   CONSTRAINT `fk_comment_superpersons1` FOREIGN KEY (`superpersons_id`) REFERENCES `superpersons` (`id`) ON DELETE NO ACTION ON UPDATE NO ACTION
-) ENGINE=InnoDB AUTO_INCREMENT=2 DEFAULT CHARSET=latin1;
+) ENGINE=InnoDB AUTO_INCREMENT=6 DEFAULT CHARSET=latin1;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -42,7 +42,6 @@ CREATE TABLE `comment` (
 
 LOCK TABLES `comment` WRITE;
 /*!40000 ALTER TABLE `comment` DISABLE KEYS */;
-INSERT INTO `comment` VALUES (1,1,'tony stark is played by rdj','2016-02-16 00:00:00',1);
 /*!40000 ALTER TABLE `comment` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -62,7 +61,7 @@ CREATE TABLE `favorite_superpersons` (
   KEY `fk_superpersons_has_user_superpersons1_idx` (`superpersons_id`),
   CONSTRAINT `fk_superpersons_has_user_user1` FOREIGN KEY (`user_id`) REFERENCES `user` (`id`) ON DELETE CASCADE ON UPDATE NO ACTION,
   CONSTRAINT `fk_superpersons_has_user_superpersons1` FOREIGN KEY (`superpersons_id`) REFERENCES `superpersons` (`id`) ON DELETE NO ACTION ON UPDATE NO ACTION
-) ENGINE=InnoDB AUTO_INCREMENT=21 DEFAULT CHARSET=latin1;
+) ENGINE=InnoDB AUTO_INCREMENT=25 DEFAULT CHARSET=latin1;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -71,7 +70,7 @@ CREATE TABLE `favorite_superpersons` (
 
 LOCK TABLES `favorite_superpersons` WRITE;
 /*!40000 ALTER TABLE `favorite_superpersons` DISABLE KEYS */;
-INSERT INTO `favorite_superpersons` VALUES (14,1,1);
+INSERT INTO `favorite_superpersons` VALUES (14,1,1),(21,2,2),(22,11,3),(23,15,1),(24,2,1);
 /*!40000 ALTER TABLE `favorite_superpersons` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -227,4 +226,4 @@ UNLOCK TABLES;
 /*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
 /*!40111 SET SQL_NOTES=@OLD_SQL_NOTES */;
 
--- Dump completed on 2016-02-17 22:28:20
+-- Dump completed on 2016-02-18 15:18:14
