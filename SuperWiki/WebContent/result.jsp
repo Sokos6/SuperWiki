@@ -54,7 +54,7 @@
 			</c:forEach>
 		</table>
 	</c:if >
-	<c:if test = "${user.id != null}">
+	<c:if test = "${user.username != null}">
 		<form action="addComment.do" method="POST">
 			<input type="hidden" name="superPersonID" value="${result.id }" />
 			Comment:

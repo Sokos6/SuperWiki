@@ -76,7 +76,7 @@ public class LoginController
 	{
 		admin = false;
 		user.setId(2);
-		user.setUsername("guest");
+		user.setUsername(null);
 		user.setPassword("guest");
 		ModelAndView mv = new ModelAndView();
 		mv.setViewName("index.html");
